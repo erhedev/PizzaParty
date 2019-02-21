@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreLocation
 
 class Restaurant {
 //response from api
@@ -23,6 +24,7 @@ class Restaurant {
     var adress2 : String
     var lat : Double
     var long : Double
+    var location : CLLocation
     
     init(id: Int, name: String, adress1: String, adress2: String, lat: Double, long: Double) {
         self.id = id
@@ -31,21 +33,12 @@ class Restaurant {
         self.adress2 = adress2
         self.lat = lat
         self.long = long
+        
+        self.location = CLLocation(latitude: lat, longitude: long)
     }
     
-    func getDistanceToRestaurant() -> Double {
-        let lat = self.lat
-        let long = self.long
-        
-        // get user coordinates
-        
-        //calculate distance to restaurant
-        
-        
-        let distance : Double
-        
-        // return Calculated distance
-        return 1.00
+    func getDistanceToRestaurant(deviceLocation: CLLocation) -> Double {
+        return self.location.distance(from: deviceLocation)
     }
     
     

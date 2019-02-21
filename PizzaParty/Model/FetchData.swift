@@ -27,10 +27,11 @@ class FetchData {
         let allrestaurants = "\(pizzaAPI)\(restaurants)"
         ListOfRestaurants.listOfRestaurants.removeAll()
         checkIfInternetIsAvalible(type: "restaurants")
-        
+        print(allrestaurants)
         Alamofire.request(allrestaurants, method: .get).validate().responseJSON { response in
             if response.result.isSuccess {
                 print("fetched all restaurants")
+                SVProgressHUD.dismiss()
                 let restaurantData : JSON = JSON(response.result.value!)
                 JSONParsing.parseRestaurant(json: restaurantData)
             } else {
