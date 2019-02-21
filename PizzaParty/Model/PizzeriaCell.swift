@@ -14,7 +14,7 @@ protocol PizzeriaCellDelegate {
     func didTapSeeMenu(id: Int)
 }
 
-class PizzeriaCell: UITableViewCell, CLLocationManagerDelegate {
+class PizzeriaCell: UITableViewCell {
     // class for tableview cell
     
     @IBOutlet weak var pizzeriaNameLabel: UILabel!

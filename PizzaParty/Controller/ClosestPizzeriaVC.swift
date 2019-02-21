@@ -32,8 +32,10 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Allow Device to track location
         self.locationManager.requestWhenInUseAuthorization()
         
+        //Track location if enabled
         if CLLocationManager.locationServicesEnabled() {
             
             locationManager.delegate = self
@@ -41,13 +43,18 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
+        
+        
         datafetcher.fetchRestaurantData()
+        
+        restaurantTableView.reloadData()
 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // prepare for segue to menu vc or to basket.
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -79,8 +86,11 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
         
         let restaurant = ListOfRestaurants.listOfRestaurants[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as! PizzeriaCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as? PizzeriaCell else {
+            return UITableViewCell()
+        }
         cell.setPizzeriaInfo(restaurant: restaurant, location: deviceLocation)
+        cell.pizzeriaNameLabel.text = ListOfRestaurants.listOfRestaurants[indexPath.row].name
         cell.delegate = self
         return cell
 

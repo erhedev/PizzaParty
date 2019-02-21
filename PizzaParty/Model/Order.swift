@@ -9,5 +9,5 @@
 import Foundation
 
 class Order {
-    var itemsInOrder = [MenuItems]()
+    var itemsInOrder = [MenuItem]()
 }

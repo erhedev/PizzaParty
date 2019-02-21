@@ -37,20 +37,29 @@ class FetchData {
             } else {
                 print("Error \(String(describing: response.result.error))")
             }
-            
+        }
+        // tell vc parsing is done
+        //all restaurants now in array
+        // reload restaurant tableview
+    
+    }
+    
+    func fetchMenuForRestaurant(id: Int) {
+        let menuData = "\(pizzaAPI)\(restaurants)\(id)\(menu)"
+        //fetch and parse data from api
+        checkIfInternetIsAvalible(type: "menu")
+        print(menuData)
+        Alamofire.request(menuData, method: .get).validate().responseJSON { response in
+            if response.result.isSuccess {
+                print("Fetched menu for restaurant with id: \(id)")
+                SVProgressHUD.dismiss()
+                let menuData : JSON = JSON(response.result.value!)
+                JSONParsing.parseMenu(json: menuData)
+            } else {
+                print("Error \(String(describing: response.result.error))")
+            }
         }
         
-    
-        
-//        Alamofire.request(allrestaurants, method: .get).validate().responseJSON { response in
-//            if response.result.isSuccess {
-//                print("Got the info")
-//                let feedData : JSON = JSON(response.result.value!)
-//                JSONParsing.parsing(json: feedData, date: date)
-//            } else {
-//                print("Error \(response.result.error)")
-//            }
-//        }
     }
     
     
@@ -60,10 +69,9 @@ class FetchData {
             SVProgressHUD.show(withStatus: "Downloading \(type)")
         } else {
             print("Pity the fool!")
-            //            errorMessageInTableView = "You don't have any Internet Connection"
-            //            SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
             SVProgressHUD.setMaximumDismissTimeInterval(7)
-            SVProgressHUD.showError(withStatus: "Pity the fool! You don't have any Internetz Connection")
+            SVProgressHUD.showError(withStatus: "You don't have Internetz Connection")
             SVProgressHUD.setMaximumDismissTimeInterval(1)
         }
     }

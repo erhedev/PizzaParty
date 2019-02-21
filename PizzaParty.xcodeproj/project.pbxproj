@@ -22,7 +22,7 @@
 		E0D0FF1E221D66B900D10BE9 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF1D221D66B900D10BE9 /* FetchData.swift */; };
 		E0D0FF20221D671400D10BE9 /* JsonParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */; };
 		E0D0FF22221D675000D10BE9 /* ListOfRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */; };
-		E0D0FF26221D850200D10BE9 /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF25221D850200D10BE9 /* MenuItems.swift */; };
+		E0D0FF26221D850200D10BE9 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF25221D850200D10BE9 /* MenuItem.swift */; };
 		E0D0FF2E221D9A7200D10BE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF2D221D9A7200D10BE9 /* Constants.swift */; };
 		E0D0FF32221DAC6B00D10BE9 /* PizzeriaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		E0D0FF1D221D66B900D10BE9 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsing.swift; sourceTree = "<group>"; };
 		E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRestaurants.swift; sourceTree = "<group>"; };
-		E0D0FF25221D850200D10BE9 /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
+		E0D0FF25221D850200D10BE9 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		E0D0FF2D221D9A7200D10BE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaCell.swift; sourceTree = "<group>"; };
 		FB6A7222DF5DA679B06D75A8 /* Pods-PizzaPartyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaPartyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaPartyUITests/Pods-PizzaPartyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 				E0D0FF1D221D66B900D10BE9 /* FetchData.swift */,
 				E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */,
 				E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */,
-				E0D0FF25221D850200D10BE9 /* MenuItems.swift */,
+				E0D0FF25221D850200D10BE9 /* MenuItem.swift */,
 				E0D0FF2D221D9A7200D10BE9 /* Constants.swift */,
 				E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */,
 			);
@@ -443,7 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0D0FF26221D850200D10BE9 /* MenuItems.swift in Sources */,
+				E0D0FF26221D850200D10BE9 /* MenuItem.swift in Sources */,
 				E0D0FF20221D671400D10BE9 /* JsonParsing.swift in Sources */,
 				E0D0FF18221D614700D10BE9 /* ClosestPizzeriaVC.swift in Sources */,
 				E0D0FEE7221D580B00D10BE9 /* AppDelegate.swift in Sources */,
