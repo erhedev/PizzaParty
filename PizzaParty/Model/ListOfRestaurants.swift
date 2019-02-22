@@ -10,5 +10,8 @@ import Foundation
 
 class ListOfRestaurants {
     //List holding all restaurants
-    static var listOfRestaurants = [Restaurant]()    
+    static var listOfRestaurants = [Restaurant]()
+    
+    //order list based on location
+    
 }

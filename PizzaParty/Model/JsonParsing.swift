@@ -30,10 +30,17 @@ class JSONParsing {
             print("Restaurant added")
             
         }
+        //ParsingDone let notificaton center know
+        NotificationCenter.default.post(name: .doneParsingRestaurants, object: nil)
+        
+        //all menuItems now in array
+        // reload menu tableview
         
     }
     
     static func parseMenu(json: JSON) {
+        
+        //TODO: Change to menu values
         for result in json.arrayValue{
             let id = result["id"].intValue
             let name = result["name"].stringValue
@@ -50,6 +57,12 @@ class JSONParsing {
             print("Restaurant added")
             
         }
+        
+        //ParsingDone let notificaton center know
+        NotificationCenter.default.post(name: .doneParsingMenu, object: nil)
+        
+        //all menuItems now in array
+        // reload menu tableview
         
     }
     

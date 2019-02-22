@@ -32,6 +32,8 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataStartTableView(notification:)), name: .doneParsingRestaurants, object: nil)
+        
         //Allow Device to track location
         self.locationManager.requestWhenInUseAuthorization()
         
@@ -47,8 +49,12 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
         
         datafetcher.fetchRestaurantData()
         
+    }
+    
+    @objc func reloadDataStartTableView(notification: NSNotification) {
+        print(ListOfRestaurants.listOfRestaurants[0].name)
         restaurantTableView.reloadData()
-
+        SVProgressHUD.dismiss()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,10 +75,13 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
 extension ClosestPizzeriaVC: PizzeriaCellDelegate {
     func didTapSeeMenu(id: Int) {
         print("tapped \(id)")
+        
+        // fetch clicked cells menu
+        // listen for parsing to be done
+        // present menu in table view
+        
 
     }
-
-    //implement did tap menu bytton
 }
 
 //Tableviewdelegate extension
@@ -89,8 +98,7 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as? PizzeriaCell else {
             return UITableViewCell()
         }
-        cell.setPizzeriaInfo(restaurant: restaurant, location: deviceLocation)
-        cell.pizzeriaNameLabel.text = ListOfRestaurants.listOfRestaurants[indexPath.row].name
+        cell.setPizzeriaInfo(restaurant: restaurant, location: 10.00)
         cell.delegate = self
         return cell
 
@@ -98,5 +106,6 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension Notification.Name {
-    static let doneParsing = Notification.Name("doneParsing")
+    static let doneParsingRestaurants = Notification.Name("doneParsingRestaurants")
+    static let doneParsingMenu = Notification.Name("doneParsingMenu")
 }

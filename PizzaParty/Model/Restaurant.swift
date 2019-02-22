@@ -24,7 +24,7 @@ class Restaurant {
     var adress2 : String
     var lat : Double
     var long : Double
-    var location : CLLocation
+    var location : CLLocation!
     
     init(id: Int, name: String, adress1: String, adress2: String, lat: Double, long: Double) {
         self.id = id

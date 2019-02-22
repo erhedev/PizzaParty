@@ -38,9 +38,6 @@ class FetchData {
                 print("Error \(String(describing: response.result.error))")
             }
         }
-        // tell vc parsing is done
-        //all restaurants now in array
-        // reload restaurant tableview
     
     }
     

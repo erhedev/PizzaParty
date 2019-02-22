@@ -27,13 +27,18 @@ class PizzeriaCell: UITableViewCell {
     
     var delegate: PizzeriaCellDelegate?
     
-    func setPizzeriaInfo(restaurant: Restaurant, location: CLLocation) {
+    func setPizzeriaInfo(restaurant: Restaurant, location: Double) {
+        
+        
         
         pizzeria = restaurant
         pizzeriaNameLabel.text = restaurant.name
         pizzeriaAdressLabel.text = restaurant.adress1
-        pizzeriaDistanceLabel.text = "\(restaurant.getDistanceToRestaurant(deviceLocation: location)) km away from you."
+//        pizzeriaDistanceLabel.text = "\(restaurant.getDistanceToRestaurant(deviceLocation: location)) km away from you."
+        pizzeriaDistanceLabel.text = "\(location)) km away from you."
         restaurantID = restaurant.id
+        
+        
     }
     
     @IBAction func seeMenyTapped(_ sender: Any) {
