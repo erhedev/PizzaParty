@@ -19,11 +19,6 @@ class Restaurant {
 //    "latitude": 59.336078,
 //    "longitude": 18.071807
     
-    
-    fehjbcejbfcejrbcveubv ueir
-    
-    
-    
     var id : Int
     var name : String
     var adress1 : String
