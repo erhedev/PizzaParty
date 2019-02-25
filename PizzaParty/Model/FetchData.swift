@@ -61,13 +61,13 @@ class FetchData {
     
     func checkIfInternetIsAvalible(type: String) {
         if isConnectedToInternet() {
-            print("You have the Internetz!")
+            print("You have Internet!")
             SVProgressHUD.show(withStatus: "Downloading \(type)")
         } else {
             print("Pity the fool!")
             SVProgressHUD.dismiss()
             SVProgressHUD.setMaximumDismissTimeInterval(7)
-            SVProgressHUD.showError(withStatus: "You don't have Internetz Connection")
+            SVProgressHUD.showError(withStatus: "You don't have Internet Connection")
             SVProgressHUD.setMaximumDismissTimeInterval(1)
         }
     }

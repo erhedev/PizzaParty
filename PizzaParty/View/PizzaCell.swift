@@ -8,17 +8,29 @@
 
 import UIKit
 
+protocol PizzaCellDelegate {
+    func didTapAddToCart(itemID: Int, restaurantID: Int)
+}
+
 class PizzaCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var toppingLabel: UILabel!
     
+    var pizza: MenuItem!
+    var pizzaID: Int!
+    var delegate: PizzaCellDelegate?
+    
+    func setPizzaInfo(menuItem: MenuItem) {
+        pizza = menuItem
+        nameLabel.text = pizza.name
+        priceLabel.text = "\(String(describing: pizza.price)) kr"
+        toppingLabel.text = "\(String(describing: pizza.topping))"
+        pizzaID = menuItem.id
+    }
+   
+    @IBAction func orderButton(_ sender: Any) {
+        delegate?.didTapAddToCart(itemID: pizzaID, restaurantID: ListOfRestaurants.listOfRestaurants[ListOfRestaurants.listOfRestaurants.count-1].id )
+    }
 }

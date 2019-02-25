@@ -10,6 +10,8 @@
 		49F44E8768C8C4D1C26E5CAC /* Pods_PizzaPartyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2DC8C805D27CA9E4B2687D /* Pods_PizzaPartyUITests.framework */; };
 		8DCF147804DD8D0ECEB4B573 /* Pods_PizzaParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD08AB9ECD4957E3A882F817 /* Pods_PizzaParty.framework */; };
 		CE62210415BFDD9D0A8236EB /* Pods_PizzaPartyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107F08A869BEB12E0E654731 /* Pods_PizzaPartyTests.framework */; };
+		E077058522242DA700E4E62A /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058422242DA700E4E62A /* Cart.swift */; };
+		E077058722244CFF00E4E62A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058622244CFF00E4E62A /* MenuTableViewController.swift */; };
 		E0D0FEE7221D580B00D10BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */; };
 		E0D0FEEC221D580B00D10BE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D0FEEA221D580B00D10BE9 /* Main.storyboard */; };
 		E0D0FEEE221D580B00D10BE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D0FEED221D580B00D10BE9 /* Assets.xcassets */; };
@@ -18,14 +20,12 @@
 		E0D0FF07221D580C00D10BE9 /* PizzaPartyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF06221D580C00D10BE9 /* PizzaPartyUITests.swift */; };
 		E0D0FF18221D614700D10BE9 /* ClosestPizzeriaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF17221D614700D10BE9 /* ClosestPizzeriaVC.swift */; };
 		E0D0FF1A221D666A00D10BE9 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF19221D666A00D10BE9 /* Restaurant.swift */; };
-		E0D0FF1C221D668800D10BE9 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF1B221D668800D10BE9 /* Order.swift */; };
 		E0D0FF1E221D66B900D10BE9 /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF1D221D66B900D10BE9 /* FetchData.swift */; };
 		E0D0FF20221D671400D10BE9 /* JsonParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */; };
 		E0D0FF22221D675000D10BE9 /* ListOfRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */; };
 		E0D0FF26221D850200D10BE9 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF25221D850200D10BE9 /* MenuItem.swift */; };
 		E0D0FF2E221D9A7200D10BE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF2D221D9A7200D10BE9 /* Constants.swift */; };
 		E0D0FF32221DAC6B00D10BE9 /* PizzeriaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */; };
-		E0D19A502223EC2300E34F30 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D19A4F2223EC2300E34F30 /* MenuVC.swift */; };
 		E0D19A522223ECDB00E34F30 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D19A512223ECDB00E34F30 /* MenuList.swift */; };
 		E0D19A552223F82700E34F30 /* PizzaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D19A532223F82700E34F30 /* PizzaCell.swift */; };
 		E0D19A562223F82700E34F30 /* PizzaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D19A542223F82700E34F30 /* PizzaCell.xib */; };
@@ -60,6 +60,8 @@
 		943E74F23ECBC9577AFB3F58 /* Pods-PizzaParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaParty/Pods-PizzaParty.debug.xcconfig"; sourceTree = "<group>"; };
 		AF2DC8C805D27CA9E4B2687D /* Pods_PizzaPartyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaPartyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD08AB9ECD4957E3A882F817 /* Pods_PizzaParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E077058422242DA700E4E62A /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		E077058622244CFF00E4E62A /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		E0D0FEE3221D580B00D10BE9 /* PizzaParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0D0FEEB221D580B00D10BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,14 +76,12 @@
 		E0D0FF08221D580C00D10BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0D0FF17221D614700D10BE9 /* ClosestPizzeriaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosestPizzeriaVC.swift; sourceTree = "<group>"; };
 		E0D0FF19221D666A00D10BE9 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		E0D0FF1B221D668800D10BE9 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E0D0FF1D221D66B900D10BE9 /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
 		E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParsing.swift; sourceTree = "<group>"; };
 		E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRestaurants.swift; sourceTree = "<group>"; };
 		E0D0FF25221D850200D10BE9 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		E0D0FF2D221D9A7200D10BE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaCell.swift; sourceTree = "<group>"; };
-		E0D19A4F2223EC2300E34F30 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		E0D19A512223ECDB00E34F30 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		E0D19A532223F82700E34F30 /* PizzaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCell.swift; sourceTree = "<group>"; };
 		E0D19A542223F82700E34F30 /* PizzaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PizzaCell.xib; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 			children = (
 				E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */,
 				E0D0FF17221D614700D10BE9 /* ClosestPizzeriaVC.swift */,
-				E0D19A4F2223EC2300E34F30 /* MenuVC.swift */,
 				E0D19A5B2223F8C900E34F30 /* OrderVC.swift */,
+				E077058622244CFF00E4E62A /* MenuTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,11 +208,11 @@
 		E0D0FF15221D5D8100D10BE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0D0FEEA221D580B00D10BE9 /* Main.storyboard */,
+				E0D0FEEF221D580B00D10BE9 /* LaunchScreen.storyboard */,
 				E0D0FF31221DAC6B00D10BE9 /* PizzeriaCell.swift */,
 				E0D19A532223F82700E34F30 /* PizzaCell.swift */,
 				E0D19A542223F82700E34F30 /* PizzaCell.xib */,
-				E0D0FEEA221D580B00D10BE9 /* Main.storyboard */,
-				E0D0FEEF221D580B00D10BE9 /* LaunchScreen.storyboard */,
 				E0D19A572223F86500E34F30 /* MenuItemCell.swift */,
 				E0D19A582223F86500E34F30 /* MenuItemCell.xib */,
 			);
@@ -222,14 +222,14 @@
 		E0D0FF16221D5D8D00D10BE9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0D0FF19221D666A00D10BE9 /* Restaurant.swift */,
-				E0D0FF1B221D668800D10BE9 /* Order.swift */,
 				E0D0FF1D221D66B900D10BE9 /* FetchData.swift */,
 				E0D0FF1F221D671400D10BE9 /* JsonParsing.swift */,
-				E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */,
+				E0D0FF19221D666A00D10BE9 /* Restaurant.swift */,
 				E0D0FF25221D850200D10BE9 /* MenuItem.swift */,
-				E0D0FF2D221D9A7200D10BE9 /* Constants.swift */,
+				E077058422242DA700E4E62A /* Cart.swift */,
 				E0D19A512223ECDB00E34F30 /* MenuList.swift */,
+				E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */,
+				E0D0FF2D221D9A7200D10BE9 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -468,15 +468,15 @@
 			files = (
 				E0D0FF26221D850200D10BE9 /* MenuItem.swift in Sources */,
 				E0D0FF20221D671400D10BE9 /* JsonParsing.swift in Sources */,
+				E077058722244CFF00E4E62A /* MenuTableViewController.swift in Sources */,
 				E0D0FF18221D614700D10BE9 /* ClosestPizzeriaVC.swift in Sources */,
 				E0D0FEE7221D580B00D10BE9 /* AppDelegate.swift in Sources */,
 				E0D19A5C2223F8C900E34F30 /* OrderVC.swift in Sources */,
 				E0D19A552223F82700E34F30 /* PizzaCell.swift in Sources */,
 				E0D0FF1E221D66B900D10BE9 /* FetchData.swift in Sources */,
+				E077058522242DA700E4E62A /* Cart.swift in Sources */,
 				E0D0FF32221DAC6B00D10BE9 /* PizzeriaCell.swift in Sources */,
-				E0D19A502223EC2300E34F30 /* MenuVC.swift in Sources */,
 				E0D0FF22221D675000D10BE9 /* ListOfRestaurants.swift in Sources */,
-				E0D0FF1C221D668800D10BE9 /* Order.swift in Sources */,
 				E0D0FF1A221D666A00D10BE9 /* Restaurant.swift in Sources */,
 				E0D19A592223F86500E34F30 /* MenuItemCell.swift in Sources */,
 				E0D19A522223ECDB00E34F30 /* MenuList.swift in Sources */,

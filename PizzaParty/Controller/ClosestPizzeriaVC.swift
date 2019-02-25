@@ -46,7 +46,7 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
         }
         
         datafetcher.fetchRestaurantData()
-    
+        
     }
     
     @objc func reloadDataStartTableView(notification: NSNotification) {
@@ -81,7 +81,8 @@ extension ClosestPizzeriaVC: PizzeriaCellDelegate {
     }
     
     @objc func goToMenu(notification: NSNotification) {
-        print(MenuList.itemsInMenu[0].name)
+        print(MenuList.pizzaList[0].name)
+        performSegue(withIdentifier: "goToMenu", sender: self)
         SVProgressHUD.dismiss()
     }
 }
@@ -105,6 +106,7 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
         return cell
 
     }
+    
 }
 
 extension Notification.Name {

@@ -22,21 +22,16 @@ class PizzeriaCell: UITableViewCell {
     @IBOutlet weak var pizzeriaDistanceLabel: UILabel!
     
     var pizzeria: Restaurant!
-    
     var restaurantID : Int!
-    
     var delegate: PizzeriaCellDelegate?
     
     func setPizzeriaInfo(restaurant: Restaurant, location: Double) {
-        
         pizzeria = restaurant
         pizzeriaNameLabel.text = restaurant.name
         pizzeriaAdressLabel.text = restaurant.adress1
 //        pizzeriaDistanceLabel.text = "\(restaurant.getDistanceToRestaurant(deviceLocation: location)) km away from you."
         pizzeriaDistanceLabel.text = "\(location)) km away from you."
         restaurantID = restaurant.id
-        
-        
     }
     
     @IBAction func seeMenyTapped(_ sender: Any) {
