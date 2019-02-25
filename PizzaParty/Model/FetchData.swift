@@ -19,12 +19,10 @@ class FetchData {
 //    static let restaurants : String = "restaurants/"
 //    static let menu : String = "menu/"
 //    static let orders : String = "orders/"
-
-
+    
     
     func fetchRestaurantData() {
-
-        let allrestaurants = "\(pizzaAPI)\(restaurants)"
+        let allrestaurants = "\(pizzeriaAPI)\(restaurants)"
         ListOfRestaurants.listOfRestaurants.removeAll()
         checkIfInternetIsAvalible(type: "restaurants")
         print(allrestaurants)
@@ -42,7 +40,8 @@ class FetchData {
     }
     
     func fetchMenuForRestaurant(id: Int) {
-        let menuData = "\(pizzaAPI)\(restaurants)\(id)\(menu)"
+        let menuData = "\(menuAPI)\(restaurants)\(id)\(menu)"
+        print(menuData)
         //fetch and parse data from api
         checkIfInternetIsAvalible(type: "menu")
         print(menuData)

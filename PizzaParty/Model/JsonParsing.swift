@@ -42,19 +42,23 @@ class JSONParsing {
         
         //TODO: Change to menu values
         for result in json.arrayValue{
+            let category = result["category"].stringValue
             let id = result["id"].intValue
             let name = result["name"].stringValue
-            let adress1 = result["address1"].stringValue
-            let adress2 = result["address2"].stringValue
-            let lat = result["latitude"].doubleValue
-            let long = result["longitude"].doubleValue
+            let price = result["price"].intValue
+            let topping = result["topping"].arrayValue
+            let rank = result["rank"].intValue
             
-            let restaurant = Restaurant(id: id, name: name, adress1: adress1, adress2: adress2, lat: lat, long: long)
+            if category == "Pizza" {
+            let menuItemPizza = MenuItem(id: id, category: category, name: name, price: price, topping: topping, rank: rank)
+            MenuList.itemsInMenu.append(menuItemPizza)
+            } else {
+                let menuItem = MenuItem(id: id, category: category, name: name, price: price)
+                MenuList.itemsInMenu.append(menuItem)
+            }
             
-            ListOfRestaurants.listOfRestaurants.append(restaurant)
-            
-            print(ListOfRestaurants.listOfRestaurants.count)
-            print("Restaurant added")
+            print(MenuList.itemsInMenu.count)
+            print("MenuItem added")
             
         }
         

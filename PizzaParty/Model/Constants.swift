@@ -9,8 +9,9 @@
 import Foundation
 
 //Pizza API baseadress
-let pizzaAPI : String = "https://private-anon-f2ba0bf1fe-pizzaapp.apiary-mock.com/"
+let pizzeriaAPI : String = "https://private-anon-f2ba0bf1fe-pizzaapp.apiary-mock.com/"
+let menuAPI : String = "https://private-anon-a2a1a5ab76-pizzaapp.apiary-mock.com/"
 //Pizza API Endpoints
 let restaurants : String = "restaurants/"
-let menu : String = "/menu/"
+let menu : String = "/menu"
 let orders : String = "orders/"

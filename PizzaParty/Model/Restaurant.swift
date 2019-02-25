@@ -38,10 +38,7 @@ class Restaurant {
     }
     
     func getDistanceToRestaurant(deviceLocation: CLLocation) -> Double {
-        return self.location.distance(from: deviceLocation)
+        return Double(self.location.distance(from: deviceLocation))
     }
-    
-    
-    
     
 }

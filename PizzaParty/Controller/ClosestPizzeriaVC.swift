@@ -45,10 +45,8 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        
-        
         datafetcher.fetchRestaurantData()
-        
+    
     }
     
     @objc func reloadDataStartTableView(notification: NSNotification) {
@@ -63,7 +61,6 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         deviceLocation = locations.last
@@ -75,12 +72,17 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
 extension ClosestPizzeriaVC: PizzeriaCellDelegate {
     func didTapSeeMenu(id: Int) {
         print("tapped \(id)")
-        
         // fetch clicked cells menu
+        datafetcher.fetchMenuForRestaurant(id: id)
         // listen for parsing to be done
-        // present menu in table view
+        NotificationCenter.default.addObserver(self, selector: #selector(goToMenu(notification:)), name: .doneParsingMenu, object: nil)
         
-
+        // present menu in table view
+    }
+    
+    @objc func goToMenu(notification: NSNotification) {
+        print(MenuList.itemsInMenu[0].name)
+        SVProgressHUD.dismiss()
     }
 }
 

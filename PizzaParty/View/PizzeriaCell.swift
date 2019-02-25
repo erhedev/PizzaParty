@@ -29,8 +29,6 @@ class PizzeriaCell: UITableViewCell {
     
     func setPizzeriaInfo(restaurant: Restaurant, location: Double) {
         
-        
-        
         pizzeria = restaurant
         pizzeriaNameLabel.text = restaurant.name
         pizzeriaAdressLabel.text = restaurant.adress1
