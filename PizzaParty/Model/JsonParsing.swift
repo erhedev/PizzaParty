@@ -51,13 +51,13 @@ class JSONParsing {
             
             if category == "Pizza" {
             let menuItemPizza = MenuItem(id: id, category: category, name: name, price: price, topping: topping, rank: rank)
-            MenuList.itemsInMenu.append(menuItemPizza)
+            MenuList.pizzaList.append(menuItemPizza)
             } else {
                 let menuItem = MenuItem(id: id, category: category, name: name, price: price)
-                MenuList.itemsInMenu.append(menuItem)
+                MenuList.sidesList.append(menuItem)
             }
             
-            print(MenuList.itemsInMenu.count)
+            print(MenuList.pizzaList.count + MenuList.sidesList.count)
             print("MenuItem added")
             
         }

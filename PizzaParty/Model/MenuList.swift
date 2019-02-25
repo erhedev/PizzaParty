@@ -9,5 +9,6 @@
 import Foundation
 
 class MenuList {
-    static var itemsInMenu = [MenuItem]()
+    static var sidesList = [MenuItem]()
+    static var pizzaList = [MenuItem]()
 }
