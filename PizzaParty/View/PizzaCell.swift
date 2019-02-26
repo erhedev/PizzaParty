@@ -18,6 +18,8 @@ class PizzaCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var toppingLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
+    
+    var counter = 0
    
     var pizza: MenuItem!
     var pizzaID: Int!
@@ -32,6 +34,7 @@ class PizzaCell: UITableViewCell {
     }
    
     @IBAction func orderButton(_ sender: Any) {
+        
         let order = OrderedItem(menuItem: self.pizza, quantity: 1)
         let menuItem = MenuItem(id: self.pizza.id, category: self.pizza.category, name: self.pizza.name, price: self.pizza.price, topping: self.pizza.topping, rank: self.pizza.rank, fromPizzeria: self.pizza.fromPizzeria)
         MenuList.itemsToOrder.append(order)
@@ -41,5 +44,11 @@ class PizzaCell: UITableViewCell {
         orderButton.tintColor = UIColor.darkGray
         orderButton.isEnabled = false
         orderButton.setTitle("Ordered", for: .disabled)
+       
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.counter += 1
+            self.orderButton.isEnabled = true
+            self.orderButton.setTitle("\(self.counter) Ordered", for: .normal)
+        }
     }
 }

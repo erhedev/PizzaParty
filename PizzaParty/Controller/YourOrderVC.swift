@@ -19,7 +19,6 @@ class YourOrderVC: UIViewController {
         super.viewDidLoad()
         hideAndDisableButton(button: checkOrderButton)
         
-
         // Do any additional setup after loading the view.
     }
     
