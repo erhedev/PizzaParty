@@ -17,7 +17,8 @@ class PizzaCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var toppingLabel: UILabel!
-    
+    @IBOutlet weak var orderButton: UIButton!
+   
     var pizza: MenuItem!
     var pizzaID: Int!
     var delegate: PizzaCellDelegate?
@@ -31,6 +32,10 @@ class PizzaCell: UITableViewCell {
     }
    
     @IBAction func orderButton(_ sender: Any) {
-        delegate?.didTapAddToCart(itemID: pizzaID, restaurantID: ListOfRestaurants.listOfRestaurants[ListOfRestaurants.listOfRestaurants.count-1].id )
+        var order = OrderedItem(menuItem: self.pizza, quantity: 1)
+        MenuList.itemsToOrder.append(order)
+        orderButton.isEnabled = false
+        orderButton.setTitle("Ordered", for: .disabled)
+        orderButton.tintColor = UIColor.darkGray
     }
 }

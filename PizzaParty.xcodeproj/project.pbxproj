@@ -12,6 +12,9 @@
 		CE62210415BFDD9D0A8236EB /* Pods_PizzaPartyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107F08A869BEB12E0E654731 /* Pods_PizzaPartyTests.framework */; };
 		E077058522242DA700E4E62A /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058422242DA700E4E62A /* Cart.swift */; };
 		E077058722244CFF00E4E62A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058622244CFF00E4E62A /* MenuTableViewController.swift */; };
+		E077058922252F0C00E4E62A /* OrderedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058822252F0C00E4E62A /* OrderedItem.swift */; };
+		E077058B2225487F00E4E62A /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058A2225487F00E4E62A /* OrderStatus.swift */; };
+		E077058D222554F900E4E62A /* StatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077058C222554F900E4E62A /* StatusVC.swift */; };
 		E0D0FEE7221D580B00D10BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */; };
 		E0D0FEEC221D580B00D10BE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D0FEEA221D580B00D10BE9 /* Main.storyboard */; };
 		E0D0FEEE221D580B00D10BE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D0FEED221D580B00D10BE9 /* Assets.xcassets */; };
@@ -62,6 +65,9 @@
 		CD08AB9ECD4957E3A882F817 /* Pods_PizzaParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E077058422242DA700E4E62A /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		E077058622244CFF00E4E62A /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		E077058822252F0C00E4E62A /* OrderedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedItem.swift; sourceTree = "<group>"; };
+		E077058A2225487F00E4E62A /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
+		E077058C222554F900E4E62A /* StatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVC.swift; sourceTree = "<group>"; };
 		E0D0FEE3221D580B00D10BE9 /* PizzaParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0D0FEEB221D580B00D10BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				E0D19A542223F82700E34F30 /* PizzaCell.xib */,
 				E0D19A572223F86500E34F30 /* MenuItemCell.swift */,
 				E0D19A582223F86500E34F30 /* MenuItemCell.xib */,
+				E077058C222554F900E4E62A /* StatusVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +234,8 @@
 				E0D0FF19221D666A00D10BE9 /* Restaurant.swift */,
 				E0D0FF25221D850200D10BE9 /* MenuItem.swift */,
 				E077058422242DA700E4E62A /* Cart.swift */,
+				E077058A2225487F00E4E62A /* OrderStatus.swift */,
+				E077058822252F0C00E4E62A /* OrderedItem.swift */,
 				E0D19A512223ECDB00E34F30 /* MenuList.swift */,
 				E0D0FF21221D675000D10BE9 /* ListOfRestaurants.swift */,
 				E0D0FF2D221D9A7200D10BE9 /* Constants.swift */,
@@ -466,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E077058922252F0C00E4E62A /* OrderedItem.swift in Sources */,
 				E0D0FF26221D850200D10BE9 /* MenuItem.swift in Sources */,
 				E0D0FF20221D671400D10BE9 /* JsonParsing.swift in Sources */,
 				E077058722244CFF00E4E62A /* MenuTableViewController.swift in Sources */,
@@ -475,8 +485,10 @@
 				E0D19A552223F82700E34F30 /* PizzaCell.swift in Sources */,
 				E0D0FF1E221D66B900D10BE9 /* FetchData.swift in Sources */,
 				E077058522242DA700E4E62A /* Cart.swift in Sources */,
+				E077058D222554F900E4E62A /* StatusVC.swift in Sources */,
 				E0D0FF32221DAC6B00D10BE9 /* PizzeriaCell.swift in Sources */,
 				E0D0FF22221D675000D10BE9 /* ListOfRestaurants.swift in Sources */,
+				E077058B2225487F00E4E62A /* OrderStatus.swift in Sources */,
 				E0D0FF1A221D666A00D10BE9 /* Restaurant.swift in Sources */,
 				E0D19A592223F86500E34F30 /* MenuItemCell.swift in Sources */,
 				E0D19A522223ECDB00E34F30 /* MenuList.swift in Sources */,

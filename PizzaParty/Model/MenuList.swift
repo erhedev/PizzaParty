@@ -11,5 +11,5 @@ import Foundation
 class MenuList {
     static var sidesList = [MenuItem]()
     static var pizzaList = [MenuItem]()
-    static var itemsToOrder = [MenuItem]()
+    static var itemsToOrder = [OrderedItem]()
 }

@@ -9,16 +9,33 @@
 import UIKit
 
 class MenuItemCell: UITableViewCell {
+    
+    var menuItem: MenuItem!
+    var id : Int!
+    var category : String!
+    var name : String!
+    var price : Int!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+   
+    @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    func setMenuItemInfo(menuItem: MenuItem) {
+        self.menuItem = menuItem
+        self.id = menuItem.id
+        categoryLabel.text = menuItem.name
+        nameLabel.text = menuItem.name
+        priceLabel.text = String(menuItem.price)
     }
     
+
+    @IBAction func orderButtonPresed(_ sender: Any) {
+        var order = OrderedItem(menuItem: self.menuItem, quantity: 1)
+        MenuList.itemsToOrder.append(order)
+        orderButton.isEnabled = false
+        orderButton.setTitle("Ordered", for: .disabled)
+        orderButton.tintColor = UIColor.darkGray
+    }
 }

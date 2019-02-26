@@ -71,6 +71,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="Foe-As-Wk9" id="KoG-fU-8Sp"/>
+                <outlet property="orderButton" destination="hxj-P7-OFQ" id="t2l-tu-fMK"/>
                 <outlet property="priceLabel" destination="R65-LN-CdJ" id="RHW-Fe-tOq"/>
                 <outlet property="toppingLabel" destination="czh-94-Oqf" id="Q5S-eC-mQS"/>
             </connections>

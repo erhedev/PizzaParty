@@ -40,6 +40,9 @@
                         <state key="normal" title="Order">
                             <color key="titleColor" red="1" green="0.3219352271" blue="0.27879731470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="orderButtonPresed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qUj-LS-2RK"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbb-pS-Zi6">
                         <rect key="frame" x="208" y="68" width="29" height="21"/>
@@ -61,6 +64,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="CategoryLabel" destination="Ggz-Xd-wNp" id="CSa-9F-x0T"/>
+                <outlet property="categoryButton" destination="Ggz-Xd-wNp" id="Cqt-yW-OOz"/>
+                <outlet property="categoryLabel" destination="Ggz-Xd-wNp" id="Mce-ip-L1P"/>
+                <outlet property="nameLabel" destination="B9D-rS-rMn" id="tnU-oZ-otQ"/>
+                <outlet property="orderButton" destination="KH8-hb-z7g" id="Iq1-9F-mSh"/>
+                <outlet property="priceLabel" destination="Dbb-pS-Zi6" id="4W4-EC-VFN"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="128.63568215892056"/>
         </tableViewCell>
     </objects>

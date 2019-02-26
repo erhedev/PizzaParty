@@ -39,7 +39,6 @@ class JSONParsing {
     }
     
     static func parseMenu(json: JSON) {
-        
         //TODO: Change to menu values
         for result in json.arrayValue{
             let category = result["category"].stringValue
@@ -67,6 +66,28 @@ class JSONParsing {
         
         //all menuItems now in array
         // reload menu tableview
+        
+    }
+    
+    static func parseOrderStatus(json: JSON) {
+        for result in json.arrayValue {
+            let orderID = result["orderId"].intValue
+            let totalPrice = result["totalPrice"].intValue
+            let orderedAt = result["orderedAt"].stringValue
+            let estimatedDelivery = result["esitmatedDelivery"].stringValue
+            let status = result["status"].stringValue
+            let cart = result["cart"].arrayValue
+            
+            var cartObj = [String]()
+            
+            for item in cart {
+                cartObj.append(item.stringValue)
+            }
+            
+            let order = OrderStatus(orderID: orderID, totalPrice: totalPrice, orderedAt: orderedAt, estDel: estimatedDelivery, status: status, cart: cartObj)
+            
+            StatusVC.orderStatus = order
+        }
         
     }
     
