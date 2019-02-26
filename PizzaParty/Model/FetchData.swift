@@ -50,7 +50,7 @@ class FetchData {
                 print("Fetched menu for restaurant with id: \(id)")
                 SVProgressHUD.dismiss()
                 let menuData : JSON = JSON(response.result.value!)
-                JSONParsing.parseMenu(json: menuData)
+                JSONParsing.parseMenu(json: menuData, restaurantID: id)
             } else {
                 print("Error \(String(describing: response.result.error))")
             }

@@ -85,6 +85,7 @@
                                             <outlet property="pizzeriaAdressLabel" destination="oqZ-Tu-pNb" id="SxL-uc-VbA"/>
                                             <outlet property="pizzeriaDistanceLabel" destination="9HH-ih-J2a" id="Zsi-7j-6Hn"/>
                                             <outlet property="pizzeriaNameLabel" destination="cLo-be-dzW" id="OSN-eY-ADf"/>
+                                            <segue destination="Grk-Zo-vSu" kind="show" identifier="goToMenu" id="0uE-vD-cGR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -114,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="524" y="545"/>
         </scene>
-        <!--View Controller-->
+        <!--MenuVC-->
         <scene sceneID="0wR-F7-hj6">
             <objects>
-                <viewController id="Grk-Zo-vSu" sceneMemberID="viewController">
+                <viewController id="Grk-Zo-vSu" customClass="MenuVC" customModule="PizzaParty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fHX-iG-pDD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,6 +126,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uKn-8M-oPv">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Grk-Zo-vSu" id="C5W-LJ-ZMN"/>
+                                    <outlet property="delegate" destination="Grk-Zo-vSu" id="HFX-gR-g1H"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo0-bE-hhz">
                                 <rect key="frame" x="0.0" y="20" width="375" height="80"/>
@@ -205,6 +210,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WF5-Xn-B7k"/>
                     </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="uKn-8M-oPv" id="bIF-pv-m7p"/>
+                        <outlet property="restaurantNameLabel" destination="9yt-dj-Tk7" id="rQx-Pb-F3C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zou-7L-eAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,6 +282,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="coc-o5-NiT">
                                 <rect key="frame" x="0.0" y="100" width="375" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="11j-Tv-tD1" id="zxk-P9-2aa"/>
+                                    <outlet property="delegate" destination="11j-Tv-tD1" id="erD-Cr-xni"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwQ-zs-xhD">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
@@ -457,6 +470,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="33C-ow-LIM"/>
+        <segue reference="OTi-2r-qRs"/>
+        <segue reference="31O-UA-tgK"/>
     </inferredMetricsTieBreakers>
 </document>

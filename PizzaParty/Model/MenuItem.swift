@@ -83,21 +83,24 @@ class MenuItem {
     var price : Int!
     var topping : [Any]!
     var rank : Int!
+    var fromPizzeria : Int!
     
-    init(id: Int, category: String, name: String, price: Int) {
+    init(id: Int, category: String, name: String, price: Int, fromPizzeria: Int) {
         self.id = id
         self.category = category
         self.name = name
         self.price = price
+        self.fromPizzeria = fromPizzeria
     }
     
-    init(id: Int, category: String, name: String, price: Int, topping: [Any], rank: Int) {
+    init(id: Int, category: String, name: String, price: Int, topping: [Any], rank: Int, fromPizzeria: Int) {
         self.id = id
         self.category = category
         self.name = name
         self.price = price
         self.topping = topping
         self.rank = rank
+        self.fromPizzeria = fromPizzeria
     }
     
     

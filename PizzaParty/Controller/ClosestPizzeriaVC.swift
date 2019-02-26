@@ -26,9 +26,6 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var restaurantTableView: UITableView!
     
-    @IBOutlet weak var cartButton: UIButton!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,6 +69,9 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
 extension ClosestPizzeriaVC: PizzeriaCellDelegate {
     func didTapSeeMenu(id: Int) {
         print("tapped \(id)")
+        MenuList.pizzaList.removeAll()
+        MenuList.sidesList.removeAll()
+        
         // fetch clicked cells menu
         datafetcher.fetchMenuForRestaurant(id: id)
         // listen for parsing to be done
@@ -85,6 +85,8 @@ extension ClosestPizzeriaVC: PizzeriaCellDelegate {
         performSegue(withIdentifier: "goToMenu", sender: self)
         SVProgressHUD.dismiss()
     }
+    
+    
 }
 
 //Tableviewdelegate extension

@@ -32,10 +32,12 @@ class PizzaCell: UITableViewCell {
     }
    
     @IBAction func orderButton(_ sender: Any) {
-        var order = OrderedItem(menuItem: self.pizza, quantity: 1)
+        let order = OrderedItem(menuItem: self.pizza, quantity: 1)
         MenuList.itemsToOrder.append(order)
+        print(MenuList.itemsToOrder.count)
+        print(MenuList.itemsToOrder[MenuList.itemsToOrder.count-1].menuItemId)
+        orderButton.tintColor = UIColor.darkGray
         orderButton.isEnabled = false
         orderButton.setTitle("Ordered", for: .disabled)
-        orderButton.tintColor = UIColor.darkGray
     }
 }

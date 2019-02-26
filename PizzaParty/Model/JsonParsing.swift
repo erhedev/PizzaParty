@@ -38,7 +38,7 @@ class JSONParsing {
         
     }
     
-    static func parseMenu(json: JSON) {
+    static func parseMenu(json: JSON, restaurantID: Int) {
         //TODO: Change to menu values
         for result in json.arrayValue{
             let category = result["category"].stringValue
@@ -49,10 +49,10 @@ class JSONParsing {
             let rank = result["rank"].intValue
             
             if category == "Pizza" {
-            let menuItemPizza = MenuItem(id: id, category: category, name: name, price: price, topping: topping, rank: rank)
+                let menuItemPizza = MenuItem(id: id, category: category, name: name, price: price, topping: topping, rank: rank, fromPizzeria: restaurantID)
             MenuList.pizzaList.append(menuItemPizza)
             } else {
-                let menuItem = MenuItem(id: id, category: category, name: name, price: price)
+                let menuItem = MenuItem(id: id, category: category, name: name, price: price, fromPizzeria: restaurantID)
                 MenuList.sidesList.append(menuItem)
             }
             
