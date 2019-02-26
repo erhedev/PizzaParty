@@ -35,7 +35,6 @@
 		E0D19A562223F82700E34F30 /* PizzaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D19A542223F82700E34F30 /* PizzaCell.xib */; };
 		E0D19A592223F86500E34F30 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D19A572223F86500E34F30 /* MenuItemCell.swift */; };
 		E0D19A5A2223F86500E34F30 /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D19A582223F86500E34F30 /* MenuItemCell.xib */; };
-		E0D19A5C2223F8C900E34F30 /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D19A5B2223F8C900E34F30 /* OrderVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +94,6 @@
 		E0D19A542223F82700E34F30 /* PizzaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PizzaCell.xib; sourceTree = "<group>"; };
 		E0D19A572223F86500E34F30 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		E0D19A582223F86500E34F30 /* MenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemCell.xib; sourceTree = "<group>"; };
-		E0D19A5B2223F8C900E34F30 /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		FB6A7222DF5DA679B06D75A8 /* Pods-PizzaPartyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaPartyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzaPartyUITests/Pods-PizzaPartyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,7 +205,6 @@
 			children = (
 				E0D0FEE6221D580B00D10BE9 /* AppDelegate.swift */,
 				E0D0FF17221D614700D10BE9 /* ClosestPizzeriaVC.swift */,
-				E0D19A5B2223F8C900E34F30 /* OrderVC.swift */,
 				E077058E2225666D00E4E62A /* MenuVC.swift */,
 				E077059022257A7700E4E62A /* YourOrderVC.swift */,
 			);
@@ -484,7 +481,6 @@
 				E0D0FF18221D614700D10BE9 /* ClosestPizzeriaVC.swift in Sources */,
 				E0D0FEE7221D580B00D10BE9 /* AppDelegate.swift in Sources */,
 				E077058F2225666D00E4E62A /* MenuVC.swift in Sources */,
-				E0D19A5C2223F8C900E34F30 /* OrderVC.swift in Sources */,
 				E0D19A552223F82700E34F30 /* PizzaCell.swift in Sources */,
 				E0D0FF1E221D66B900D10BE9 /* FetchData.swift in Sources */,
 				E077058522242DA700E4E62A /* Cart.swift in Sources */,

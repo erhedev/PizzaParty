@@ -33,7 +33,9 @@ class PizzaCell: UITableViewCell {
    
     @IBAction func orderButton(_ sender: Any) {
         let order = OrderedItem(menuItem: self.pizza, quantity: 1)
+        let menuItem = MenuItem(id: self.pizza.id, category: self.pizza.category, name: self.pizza.name, price: self.pizza.price, topping: self.pizza.topping, rank: self.pizza.rank, fromPizzeria: self.pizza.fromPizzeria)
         MenuList.itemsToOrder.append(order)
+        MenuList.menuItemsToOrder.append(menuItem)
         print(MenuList.itemsToOrder.count)
         print(MenuList.itemsToOrder[MenuList.itemsToOrder.count-1].menuItemId)
         orderButton.tintColor = UIColor.darkGray

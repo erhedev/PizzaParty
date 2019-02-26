@@ -17,17 +17,17 @@ class MenuItemCell: UITableViewCell {
     var price : Int!
 
    
-    @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
     func setMenuItemInfo(menuItem: MenuItem) {
         self.menuItem = menuItem
         self.id = menuItem.id
-        categoryLabel.text = menuItem.name
-        nameLabel.text = menuItem.name
-        priceLabel.text = String(menuItem.price)
+        self.categoryLabel.text = menuItem.category
+        self.nameLabel.text = menuItem.name
+        self.priceLabel.text = String(menuItem.price)
     }
     
 

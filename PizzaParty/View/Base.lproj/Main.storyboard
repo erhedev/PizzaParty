@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="1416.8" y="547.37631184407803"/>
         </scene>
-        <!--View Controller-->
+        <!--Your OrderVC-->
         <scene sceneID="Zgf-a7-v4F">
             <objects>
-                <viewController id="11j-Tv-tD1" sceneMemberID="viewController">
+                <viewController id="11j-Tv-tD1" customClass="YourOrderVC" customModule="PizzaParty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0KE-iN-idC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +238,8 @@
                                         </constraints>
                                         <state key="normal" title="Back"/>
                                         <connections>
+                                            <action selector="backButton:" destination="y12-GW-Kdw" eventType="touchUpInside" id="yNU-45-lP2"/>
+                                            <action selector="backButtonPressed:" destination="11j-Tv-tD1" eventType="touchUpInside" id="ssR-6t-Miw"/>
                                             <segue destination="Grk-Zo-vSu" kind="show" identifier="BackToMenu" id="31O-UA-tgK"/>
                                         </connections>
                                     </button>
@@ -296,6 +298,9 @@
                                         <state key="normal" title="Place Order">
                                             <color key="titleColor" red="1" green="0.3219352271" blue="0.27879731470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="placeOrderPressed:" destination="11j-Tv-tD1" eventType="touchUpInside" id="FqX-8h-DRM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQg-WF-7KK">
                                         <rect key="frame" x="94" y="20.5" width="187" height="39"/>
@@ -304,6 +309,7 @@
                                             <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="cheCKOrderStatusPressed:" destination="11j-Tv-tD1" eventType="touchUpInside" id="hFV-ek-ZEd"/>
                                             <segue destination="ndQ-3M-8t3" kind="show" identifier="goToOrderStatus" id="sqR-YZ-OZH"/>
                                         </connections>
                                     </button>
@@ -333,8 +339,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iGD-dd-r4F"/>
                     </view>
+                    <connections>
+                        <outlet property="CheckOrderButton" destination="FQg-WF-7KK" id="djd-ef-vk9"/>
+                        <outlet property="checkOrderButton" destination="FQg-WF-7KK" id="6Gd-Be-0Iw"/>
+                        <outlet property="orderTableView" destination="coc-o5-NiT" id="fRq-iv-gNW"/>
+                        <outlet property="placeOrderButton" destination="8Dc-Ko-RsL" id="10X-XA-tBm"/>
+                        <outlet property="restaurantNameLabel" destination="36J-KA-m60" id="mbe-CM-iu7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvw-ZC-OeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="y12-GW-Kdw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2372" y="182.15892053973016"/>
         </scene>

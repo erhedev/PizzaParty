@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggz-Xd-wNp">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggz-Xd-wNp" userLabel="Category Label">
                         <rect key="frame" x="16" y="11" width="70.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -65,9 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="CategoryLabel" destination="Ggz-Xd-wNp" id="CSa-9F-x0T"/>
-                <outlet property="categoryButton" destination="Ggz-Xd-wNp" id="Cqt-yW-OOz"/>
-                <outlet property="categoryLabel" destination="Ggz-Xd-wNp" id="Mce-ip-L1P"/>
+                <outlet property="categoryLabel" destination="Ggz-Xd-wNp" id="wZK-kz-vbL"/>
                 <outlet property="nameLabel" destination="B9D-rS-rMn" id="tnU-oZ-otQ"/>
                 <outlet property="orderButton" destination="KH8-hb-z7g" id="Iq1-9F-mSh"/>
                 <outlet property="priceLabel" destination="Dbb-pS-Zi6" id="4W4-EC-VFN"/>

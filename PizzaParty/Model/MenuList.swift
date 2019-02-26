@@ -12,4 +12,5 @@ class MenuList {
     static var sidesList = [MenuItem]()
     static var pizzaList = [MenuItem]()
     static var itemsToOrder = [OrderedItem]()
+    static var menuItemsToOrder = [MenuItem]()
 }
