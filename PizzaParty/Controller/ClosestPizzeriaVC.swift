@@ -20,7 +20,7 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     
     var pizzeriaDelegate: PizzeriaCellDelegate?
     
-    var datafetcher = FetchData()
+    var datafetcher = DataTransfer()
     
     var restaurantList = [Restaurant]()
     
@@ -62,7 +62,7 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         ClosestPizzeriaVC.deviceLocation = locations.last
-        print("deviceLocation: \(ClosestPizzeriaVC.deviceLocation)")
+        print("deviceLocation: \(String(describing: ClosestPizzeriaVC.deviceLocation))")
     }
     
 

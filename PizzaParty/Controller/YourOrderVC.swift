@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class YourOrderVC: UIViewController {
-
+    
+    var restaurantID : Int!
+    var dataHandler = DataTransfer()
+    static var orderID : Int!
+    
+    
     @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var placeOrderButton: UIButton!
@@ -17,7 +23,14 @@ class YourOrderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(prepareForOrderStatus(notification:)), name: .doneParsingOrderStatus, object: nil)
+        
         hideAndDisableButton(button: checkOrderButton)
+        
+        restaurantID = MenuList.pizzaList[0].fromPizzeria
+        
+        restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
         
         // Do any additional setup after loading the view.
     }
@@ -32,8 +45,26 @@ class YourOrderVC: UIViewController {
         button.isHidden = false
     }
     
-    @IBAction func placeOrderPressed(_ sender: Any) {
+    func placeOrder() {
+        let order = Order(cart: MenuList.itemsToOrder, restuarantId: MenuList.pizzaList[0].fromPizzeria)
         
+        dataHandler.postOrder(order: order)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(parseOrderStatus(notification:)), name: .orderPosted, object: nil)
+        
+    }
+    
+    @objc func prepareForOrderStatus(notification: NSNotification) {
+        hideAndDisableButton(button: placeOrderButton)
+        showAndActivateButton(button: checkOrderButton)
+    }
+    
+    @objc func parseOrderStatus(notification: NSNotification) {
+        dataHandler.fetchOrderStatus(orderID: (StatusVC.orderStatus?.orderID)!)
+    }
+    
+    @IBAction func placeOrderPressed(_ sender: Any) {
+        placeOrder()
     }
  
     @IBAction func cheCKOrderStatusPressed(_ sender: Any) {
@@ -69,3 +100,10 @@ extension YourOrderVC: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+    
+extension Notification.Name {
+    static let orderPosted = Notification.Name("orderPosted")
+    static let doneParsingOrderStatus = Notification.Name("doneParsingOrderStatus")
+}
+

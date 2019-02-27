@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class JSONParsing {
     
-    static var restaurantVC = ClosestPizzeriaVC()
+//    static var restaurantVC = ClosestPizzeriaVC()
     
     static func parseRestaurant(json: JSON) {
         for result in json.arrayValue{
@@ -88,6 +88,9 @@ class JSONParsing {
             
             StatusVC.orderStatus = order
         }
+       
+        //Parsing Done let notificaton center know
+        NotificationCenter.default.post(name: .doneParsingOrderStatus, object: nil)
         
     }
     
