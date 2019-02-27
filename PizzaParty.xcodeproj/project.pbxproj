@@ -207,6 +207,7 @@
 				E0D0FF17221D614700D10BE9 /* ClosestPizzeriaVC.swift */,
 				E077058E2225666D00E4E62A /* MenuVC.swift */,
 				E077059022257A7700E4E62A /* YourOrderVC.swift */,
+				E077058C222554F900E4E62A /* StatusVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,7 +222,6 @@
 				E0D19A542223F82700E34F30 /* PizzaCell.xib */,
 				E0D19A572223F86500E34F30 /* MenuItemCell.swift */,
 				E0D19A582223F86500E34F30 /* MenuItemCell.xib */,
-				E077058C222554F900E4E62A /* StatusVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

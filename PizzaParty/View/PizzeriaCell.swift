@@ -24,13 +24,19 @@ class PizzeriaCell: UITableViewCell {
     var pizzeria: Restaurant!
     var restaurantID : Int!
     var delegate: PizzeriaCellDelegate?
+    var deviceLocation : CLLocation!
+    var distance : Double!
+   
     
-    func setPizzeriaInfo(restaurant: Restaurant, location: Double) {
+    func setPizzeriaInfo(restaurant: Restaurant, deviceLocation: CLLocation) {
         pizzeria = restaurant
         pizzeriaNameLabel.text = restaurant.name
         pizzeriaAdressLabel.text = restaurant.adress1
 //        pizzeriaDistanceLabel.text = "\(restaurant.getDistanceToRestaurant(deviceLocation: location)) km away from you."
-        pizzeriaDistanceLabel.text = "\(location)) km away from you."
+        self.deviceLocation = deviceLocation
+        distance = pizzeria.getDistanceToRestaurant(deviceLocation: deviceLocation)
+        print(distance)
+        pizzeriaDistanceLabel.text = "\(distance ?? 0.00)) km away from you."
         restaurantID = restaurant.id
     }
     

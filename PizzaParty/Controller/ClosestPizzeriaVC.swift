@@ -61,6 +61,7 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         deviceLocation = locations.last
+        print("deviceLocation: \(deviceLocation)")
     }
     
 
@@ -103,7 +104,7 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as? PizzeriaCell else {
             return UITableViewCell()
         }
-        cell.setPizzeriaInfo(restaurant: restaurant, location: 10.00)
+        cell.setPizzeriaInfo(restaurant: restaurant, deviceLocation: deviceLocation)
         cell.delegate = self
         return cell
 
