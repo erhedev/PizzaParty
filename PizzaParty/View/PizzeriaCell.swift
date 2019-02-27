@@ -6,6 +6,8 @@
 //  Copyright © 2019 Erik Hede. All rights reserved.
 //
 
+//"\(distance ?? 0.00)) km away from you."
+
 import Foundation
 import UIKit
 import CoreLocation
@@ -36,7 +38,7 @@ class PizzeriaCell: UITableViewCell {
         self.deviceLocation = deviceLocation
         distance = pizzeria.getDistanceToRestaurant(deviceLocation: deviceLocation)
         print(distance)
-        pizzeriaDistanceLabel.text = "\(distance ?? 0.00)) km away from you."
+        pizzeriaDistanceLabel.text = String(format: "%.2f km away", distance/1000) 
         restaurantID = restaurant.id
     }
     

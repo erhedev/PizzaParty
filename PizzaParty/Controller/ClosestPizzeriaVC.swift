@@ -16,13 +16,13 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     //LocationManager
     var locationManager = CLLocationManager()
     
-    var deviceLocation : CLLocation!
+    static var deviceLocation : CLLocation!
     
     var pizzeriaDelegate: PizzeriaCellDelegate?
     
     var datafetcher = FetchData()
     
-    var restaurantList = ListOfRestaurants.listOfRestaurants
+    var restaurantList = [Restaurant]()
     
     @IBOutlet weak var restaurantTableView: UITableView!
     
@@ -48,20 +48,21 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     
     @objc func reloadDataStartTableView(notification: NSNotification) {
         print(ListOfRestaurants.listOfRestaurants[0].name)
+        
+        
+        //sort list on distance
+        restaurantList = ListOfRestaurants.listOfRestaurants.sorted(by: {$0.distanceFromDevice < $1.distanceFromDevice})
+        
         restaurantTableView.reloadData()
         SVProgressHUD.dismiss()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // prepare for segue to menu vc or to basket.
     }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        deviceLocation = locations.last
-        print("deviceLocation: \(deviceLocation)")
+        ClosestPizzeriaVC.deviceLocation = locations.last
+        print("deviceLocation: \(ClosestPizzeriaVC.deviceLocation)")
     }
     
 
@@ -99,12 +100,12 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let restaurant = ListOfRestaurants.listOfRestaurants[indexPath.row]
+        let restaurant = restaurantList[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as? PizzeriaCell else {
             return UITableViewCell()
         }
-        cell.setPizzeriaInfo(restaurant: restaurant, deviceLocation: deviceLocation)
+        cell.setPizzeriaInfo(restaurant: restaurant, deviceLocation: ClosestPizzeriaVC.deviceLocation)
         cell.delegate = self
         return cell
 

@@ -26,6 +26,7 @@ class Restaurant {
     var lat : Double
     var long : Double
     var location : CLLocation?
+    var distanceFromDevice : Double!
     
     init(id: Int, name: String, adress1: String, adress2: String, lat: Double, long: Double) {
         self.id = id
@@ -36,6 +37,8 @@ class Restaurant {
         self.long = long
         
         self.location = CLLocation(latitude: lat, longitude: long)
+        self.distanceFromDevice = getDistanceToRestaurant(deviceLocation: ClosestPizzeriaVC.deviceLocation)
+        
     }
     
     func getDistanceToRestaurant(deviceLocation: CLLocation) -> Double {

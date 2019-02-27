@@ -13,5 +13,5 @@ class ListOfRestaurants {
     static var listOfRestaurants = [Restaurant]()
     
     //order list based on location
-    
+        
 }
