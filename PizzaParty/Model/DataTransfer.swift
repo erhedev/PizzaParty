@@ -101,9 +101,13 @@ class DataTransfer {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-                    // get the id from the response
-//                    JSONParsing.parseOrderStatus(json: json)
-                    
+                    if let jsonData = try? JSONSerialization.data(withJSONObject:json) {
+                        let status = try JSONDecoder().decode(OrderStatusResponse.self, from: jsonData)
+                        print(status.orderId)
+                        StatusVC.orderId = status.orderId
+                    }
+                
+
                 } catch {
                     print(error)
                 }

@@ -8,14 +8,36 @@
 
 import Foundation
 
-class Order {
+class Order{
     var cart : [OrderedItem]!
     var restuarantId : Int!
     
+    let restIdDict = ["restuarantId": Int()]
+    let cartDict = ["cart": []]
+   
     init(cart: [OrderedItem], restuarantId: Int) {
         self.cart = cart
         self.restuarantId = restuarantId
     }
 }
 
+//make json object to post to api from data in items to order
+
+//    {
+//    "cart": [
+//    {
+//    "menuItemId": 2,
+//    "quantity": 1
+//    },
+//    {
+//    "menuItemId": 3,
+//    "quantity": 1
+//    },
+//    {
+//    "menuItemId": 6,
+//    "quantity": 2
+//    }
+//    ],
+//    "restuarantId": 1
+//    }
 

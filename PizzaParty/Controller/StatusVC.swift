@@ -11,6 +11,7 @@ import UIKit
 class StatusVC: UIViewController {
     
     static var orderStatus : OrderStatus?
+    static var orderId : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
