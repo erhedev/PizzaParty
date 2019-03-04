@@ -29,7 +29,7 @@ class PizzaCell: UITableViewCell {
         pizza = menuItem
         nameLabel.text = pizza.name
         priceLabel.text = "\(String(describing: pizza.price)) kr"
-        toppingLabel.text = "\(String(describing: pizza.topping))"
+        toppingLabel.text = String(pizza.topping.description)
         pizzaID = menuItem.id
     }
    

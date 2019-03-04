@@ -28,7 +28,7 @@ class MenuItemCell: UITableViewCell {
         self.id = menuItem.id
         self.categoryLabel.text = menuItem.category
         self.nameLabel.text = menuItem.name
-        self.priceLabel.text = String(menuItem.price)
+        self.priceLabel.text = String(menuItem.price) + " Kr"
     }
     
 
