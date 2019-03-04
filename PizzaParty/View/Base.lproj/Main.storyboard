@@ -455,9 +455,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX7-uv-lWf">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-jD-47S">
-                                        <rect key="frame" x="120" y="23" width="137" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-jD-47S">
+                                        <rect key="frame" x="119" y="20.5" width="137" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="Cge-Ea-g1P"/>
+                                            <constraint firstAttribute="width" constant="137" id="zZ5-bO-HCH"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Update Status">
                                             <color key="titleColor" red="1" green="0.3219352271" blue="0.27879731470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -469,6 +472,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="8Zn-jD-47S" firstAttribute="centerY" secondItem="VX7-uv-lWf" secondAttribute="centerY" id="AhD-7U-At9"/>
+                                    <constraint firstItem="8Zn-jD-47S" firstAttribute="centerX" secondItem="VX7-uv-lWf" secondAttribute="centerX" id="dPX-fe-MMt"/>
                                     <constraint firstAttribute="height" constant="80" id="q75-Zy-jcB"/>
                                 </constraints>
                             </view>
@@ -500,7 +505,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sqR-YZ-OZH"/>
         <segue reference="33C-ow-LIM"/>
         <segue reference="31O-UA-tgK"/>
     </inferredMetricsTieBreakers>
