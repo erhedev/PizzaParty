@@ -28,7 +28,7 @@ class PizzaCell: UITableViewCell {
     func setPizzaInfo(menuItem: MenuItem) {
         pizza = menuItem
         nameLabel.text = pizza.name
-        priceLabel.text = "\(String(describing: pizza.price)) kr"
+        priceLabel.text = "\(pizza.price!) kr"
         toppingLabel.text = String(pizza.topping.description)
         pizzaID = menuItem.id
     }
