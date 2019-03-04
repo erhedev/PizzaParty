@@ -13,4 +13,5 @@ class MenuList {
     static var pizzaList = [MenuItem]()
     static var itemsToOrder = [OrderedItem]()
     static var menuItemsToOrder = [MenuItem]()
+    static var orderStatuses = [OrderStatus]()
 }

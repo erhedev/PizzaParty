@@ -200,12 +200,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uKn-8M-oPv" firstAttribute="bottom" secondItem="WF5-Xn-B7k" secondAttribute="bottom" id="ADS-q8-dLx"/>
-                            <constraint firstItem="uKn-8M-oPv" firstAttribute="top" secondItem="wo0-bE-hhz" secondAttribute="bottom" id="QeY-2w-zsI"/>
                             <constraint firstItem="wo0-bE-hhz" firstAttribute="top" secondItem="WF5-Xn-B7k" secondAttribute="top" id="UQD-p4-4Zb"/>
                             <constraint firstItem="wo0-bE-hhz" firstAttribute="leading" secondItem="WF5-Xn-B7k" secondAttribute="leading" id="Wa1-rn-nXj"/>
                             <constraint firstItem="wo0-bE-hhz" firstAttribute="trailing" secondItem="WF5-Xn-B7k" secondAttribute="trailing" id="bsL-mG-dKV"/>
+                            <constraint firstItem="uKn-8M-oPv" firstAttribute="top" secondItem="wo0-bE-hhz" secondAttribute="bottom" id="l6t-1n-tm2"/>
                             <constraint firstItem="uKn-8M-oPv" firstAttribute="trailing" secondItem="WF5-Xn-B7k" secondAttribute="trailing" id="n8U-mT-KXL"/>
-                            <constraint firstItem="uKn-8M-oPv" firstAttribute="top" secondItem="wo0-bE-hhz" secondAttribute="bottom" id="pSU-JA-0Ya"/>
                             <constraint firstItem="uKn-8M-oPv" firstAttribute="leading" secondItem="WF5-Xn-B7k" secondAttribute="leading" id="xud-LZ-VVY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WF5-Xn-B7k"/>
@@ -239,7 +238,6 @@
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="backButton:" destination="y12-GW-Kdw" eventType="touchUpInside" id="yNU-45-lP2"/>
-                                            <action selector="backButtonPressed:" destination="11j-Tv-tD1" eventType="touchUpInside" id="ssR-6t-Miw"/>
                                             <segue destination="Grk-Zo-vSu" kind="show" identifier="BackToMenu" id="31O-UA-tgK"/>
                                         </connections>
                                     </button>
@@ -309,7 +307,6 @@
                                             <color key="titleColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cheCKOrderStatusPressed:" destination="11j-Tv-tD1" eventType="touchUpInside" id="hFV-ek-ZEd"/>
                                             <segue destination="ndQ-3M-8t3" kind="show" identifier="goToOrderStatus" id="sqR-YZ-OZH"/>
                                         </connections>
                                     </button>
@@ -352,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="2372" y="182.15892053973016"/>
         </scene>
-        <!--View Controller-->
+        <!--StatusVC-->
         <scene sceneID="Qq8-Vs-qtX">
             <objects>
-                <viewController id="ndQ-3M-8t3" sceneMemberID="viewController">
+                <viewController id="ndQ-3M-8t3" customClass="StatusVC" customModule="PizzaParty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OxU-sh-Fwv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,7 +375,7 @@
                                         <rect key="frame" x="87.5" y="15" width="200" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Order Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZf-Fr-ZDZ">
-                                                <rect key="frame" x="50" y="0.0" width="100" height="22.5"/>
+                                                <rect key="frame" x="50" y="0.0" width="100" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="wbl-Z4-osL"/>
                                                 </constraints>
@@ -386,21 +383,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQz-0p-xer">
-                                                <rect key="frame" x="0.0" y="29.5" width="200" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="uQz-0p-xer" secondAttribute="bottom" id="Eer-HO-EdA"/>
                                             <constraint firstAttribute="width" constant="200" id="Nc8-Fk-ggL"/>
-                                            <constraint firstAttribute="trailing" secondItem="uQz-0p-xer" secondAttribute="trailing" id="Peo-ea-KVH"/>
                                             <constraint firstAttribute="height" constant="50" id="Rt8-df-rTN"/>
-                                            <constraint firstItem="uQz-0p-xer" firstAttribute="leading" secondItem="rfd-R0-7Us" secondAttribute="leading" id="bhM-S5-upT"/>
                                             <constraint firstItem="pZf-Fr-ZDZ" firstAttribute="top" secondItem="rfd-R0-7Us" secondAttribute="top" id="ndS-uE-dRc"/>
-                                            <constraint firstItem="uQz-0p-xer" firstAttribute="top" secondItem="pZf-Fr-ZDZ" secondAttribute="bottom" constant="7" id="t3n-2W-gU6"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -465,6 +452,26 @@
                                     <constraint firstAttribute="trailing" secondItem="tII-53-NFv" secondAttribute="trailing" id="q32-oU-Ugn"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX7-uv-lWf">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zn-jD-47S">
+                                        <rect key="frame" x="120" y="23" width="137" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Update Status">
+                                            <color key="titleColor" red="1" green="0.3219352271" blue="0.27879731470000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateStatusPressed:" destination="ndQ-3M-8t3" eventType="touchUpInside" id="j8e-pf-NKB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="q75-Zy-jcB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -472,11 +479,20 @@
                             <constraint firstItem="9jb-cz-LJb" firstAttribute="trailing" secondItem="0l9-aV-zbw" secondAttribute="trailing" id="CHm-U0-TQP"/>
                             <constraint firstItem="Y8w-y9-oJ1" firstAttribute="trailing" secondItem="9jb-cz-LJb" secondAttribute="trailing" id="H12-YF-KX6"/>
                             <constraint firstItem="0l9-aV-zbw" firstAttribute="leading" secondItem="9jb-cz-LJb" secondAttribute="leading" id="Ljl-KA-dQf"/>
+                            <constraint firstItem="VX7-uv-lWf" firstAttribute="trailing" secondItem="9jb-cz-LJb" secondAttribute="trailing" id="OF3-cB-gNt"/>
+                            <constraint firstItem="VX7-uv-lWf" firstAttribute="leading" secondItem="9jb-cz-LJb" secondAttribute="leading" id="QNu-eI-Uip"/>
                             <constraint firstItem="Y8w-y9-oJ1" firstAttribute="top" secondItem="9jb-cz-LJb" secondAttribute="top" id="WJP-i9-UZ0"/>
                             <constraint firstItem="Y8w-y9-oJ1" firstAttribute="leading" secondItem="9jb-cz-LJb" secondAttribute="leading" id="x3v-iv-sLi"/>
+                            <constraint firstAttribute="bottom" secondItem="VX7-uv-lWf" secondAttribute="bottom" id="xue-np-JPa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9jb-cz-LJb"/>
                     </view>
+                    <connections>
+                        <outlet property="deliveryTimeLabel" destination="8Z1-AK-cVH" id="spK-PQ-Ef5"/>
+                        <outlet property="orderStatusLabel" destination="gBk-b8-Puf" id="E0h-KZ-g2O"/>
+                        <outlet property="orderedTimeLabel" destination="KGZ-aC-D9r" id="46u-Sa-fQR"/>
+                        <outlet property="totalPriceLabel" destination="tII-53-NFv" id="k2h-rw-L09"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhz-8C-Jis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -484,7 +500,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OTi-2r-qRs"/>
+        <segue reference="sqR-YZ-OZH"/>
+        <segue reference="33C-ow-LIM"/>
         <segue reference="31O-UA-tgK"/>
     </inferredMetricsTieBreakers>
 </document>

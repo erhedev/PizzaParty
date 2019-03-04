@@ -14,6 +14,7 @@ class YourOrderVC: UIViewController {
     var restaurantID : Int!
     var dataHandler = DataTransfer()
     static var orderID : Int!
+    var placeOrderButtonIsHidden : Bool?
     
     
     @IBOutlet weak var orderTableView: UITableView!
@@ -25,6 +26,12 @@ class YourOrderVC: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(prepareForOrderStatus(notification:)), name: .doneParsingOrderStatus, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ShowButtonsForCheckOrder(notification:)), name: .orderPosted, object: nil)
+        
+        if placeOrderButtonIsHidden == true {
+            hideAndDisableButton(button: placeOrderButton)
+        }
         
         hideAndDisableButton(button: checkOrderButton)
         
@@ -46,12 +53,13 @@ class YourOrderVC: UIViewController {
     }
     
     func placeOrder() {
+        hideAndDisableButton(button: placeOrderButton)
         let order = Order(cart: MenuList.itemsToOrder, restuarantId: MenuList.pizzaList[0].fromPizzeria)
-        
         dataHandler.postOrder(order: order)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(parseOrderStatus(notification:)), name: .orderPosted, object: nil)
-        
+    }
+    
+    @objc func ShowButtonsForCheckOrder(notification: NSNotification) {
+        showAndActivateButton(button: checkOrderButton)
     }
     
     @objc func prepareForOrderStatus(notification: NSNotification) {
@@ -60,20 +68,20 @@ class YourOrderVC: UIViewController {
     }
     
     @objc func parseOrderStatus(notification: NSNotification) {
-        dataHandler.fetchOrderStatus(orderID: (StatusVC.orderStatus?.orderID)!)
+        dataHandler.fetchOrderStatus(orderID: (MenuList.orderStatuses[0].orderID))
     }
-    
+        
     @IBAction func placeOrderPressed(_ sender: Any) {
         placeOrder()
     }
  
-    @IBAction func cheCKOrderStatusPressed(_ sender: Any) {
-        
-    }
-   
-    @IBAction func backButtonPressed(_ sender: Any) {
-        
-    }
+//    @IBAction func cheCKOrderStatusPressed(_ sender: Any) {
+//        
+//    }
+//   
+//    @IBAction func backButtonPressed(_ sender: Any) {
+//        
+//    }
     
 }
 

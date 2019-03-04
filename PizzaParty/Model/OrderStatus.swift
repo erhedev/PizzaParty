@@ -15,7 +15,16 @@ class OrderStatus{
     var orderedAt : String
     var estimatedDelivery : String
     var status : String
-    var cart : [OrderedItem]
+    var cart : [OrderedItem]?
+    
+    init(orderID: Int, totalPrice: Int, orderedAt: String, estDel: String, status: String) {
+        self.orderID = orderID
+        self.totalPrice = totalPrice
+        self.orderedAt = orderedAt
+        self.estimatedDelivery = estDel
+        self.status = status
+        self.cart = nil
+    }
 
     init(orderID: Int, totalPrice: Int, orderedAt: String, estDel: String, status: String, cart: [OrderedItem]) {
         self.orderID = orderID

@@ -65,7 +65,6 @@ class DataTransfer {
                 SVProgressHUD.dismiss()
                 let orderStatusData : JSON = JSON(response.result.value!)
                 JSONParsing.parseOrderStatus(json: orderStatusData)
-                
             } else {
                 print("Error \(String(describing: response.result.error))")
             }
@@ -99,15 +98,18 @@ class DataTransfer {
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
+                    print("json \(json)")
                     
                     if let jsonData = try? JSONSerialization.data(withJSONObject:json) {
                         let status = try JSONDecoder().decode(OrderStatusResponse.self, from: jsonData)
                         print(status.orderId)
                         StatusVC.orderId = status.orderId
+//                        StatusVC.orderStatus = OrderStatus(orderID: status.orderId, totalPrice: status.totalPrice, orderedAt: status.orderedAt, estDel: status.esitmatedDelivery, status: status.status)
+                        let orderStatus = OrderStatus(orderID: status.orderId, totalPrice: status.totalPrice, orderedAt: status.orderedAt, estDel: status.esitmatedDelivery, status: status.status)
+                        MenuList.orderStatuses.append(orderStatus)
+                        print(MenuList.orderStatuses[0].status)
                     }
                 
-
                 } catch {
                     print(error)
                 }

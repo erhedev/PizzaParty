@@ -86,7 +86,8 @@ class JSONParsing {
             
             let order = OrderStatus(orderID: orderID, totalPrice: totalPrice, orderedAt: orderedAt, estDel: estimatedDelivery, status: status, cart: cartObj)
             
-            StatusVC.orderStatus = order
+            MenuList.orderStatuses.removeAll()
+            MenuList.orderStatuses.append(order)
         }
        
         //Parsing Done let notificaton center know

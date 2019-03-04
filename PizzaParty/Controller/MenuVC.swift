@@ -20,7 +20,7 @@ class MenuVC: UIViewController {
         restaurantID = MenuList.pizzaList[0].fromPizzeria
         restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
     }
-    
+        
 }
 extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
