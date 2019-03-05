@@ -81,7 +81,7 @@ class MenuItem {
     var category : String!
     var name : String!
     var price : Int!
-    var topping : [Any]!
+    var topping : [String]?
     var rank : Int!
     var fromPizzeria : Int!
     
@@ -93,7 +93,7 @@ class MenuItem {
         self.fromPizzeria = fromPizzeria
     }
     
-    init(id: Int, category: String, name: String, price: Int, topping: [Any], rank: Int, fromPizzeria: Int) {
+    init(id: Int, category: String, name: String, price: Int, topping: [String], rank: Int, fromPizzeria: Int) {
         self.id = id
         self.category = category
         self.name = name

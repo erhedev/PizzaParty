@@ -20,44 +20,74 @@ class DataTransfer {
 //    static let menu : String = "menu/"
 //    static let orders : String = "orders/"
     
+    let apiStrings = Constants()
     
-    func fetchRestaurantData() {
-        let allrestaurantsURL = "\(pizzeriaAPI)\(restaurants)"
-        ListOfRestaurants.listOfRestaurants.removeAll()
+    
+    enum Result<Value> {
+        
+        case success(Value)
+        case loading
+        case failure(Error)
+        
+    }
+    
+    func fetchRestaurantData(completionHandler:@escaping (Result<[Restaurant]>) -> Void) {
+        
+        completionHandler(Result.loading)
+        
+        let allrestaurantsURL = "\(apiStrings.pizzeriaAPI)\(apiStrings.restaurants)"
         checkIfInternetIsAvalible(type: "restaurants")
         print(allrestaurantsURL)
         Alamofire.request(allrestaurantsURL, method: .get).validate().responseJSON { response in
-            if response.result.isSuccess {
-                print("fetched all restaurants")
-                let restaurantData : JSON = JSON(response.result.value!)
-                JSONParsing.parseRestaurant(json: restaurantData)
-                SVProgressHUD.dismiss()
-            } else {
-                print("Error \(String(describing: response.result.error))")
+            
+            switch response.result {
+            case .success(let value):
+                let restaurantData : JSON = JSON(value)
+                let data = JSONParsing.parseRestaurant(json: restaurantData)
+                completionHandler(Result.success(data))
+                return
+            case .failure(let error):
+                completionHandler(Result.failure(error))
             }
+            
+//            if response.result.isSuccess {
+//                print("fetched all restaurants")
+//                let restaurantData : JSON = JSON(response.result.value!)
+//                JSONParsing.parseRestaurant(json: restaurantData)
+//                SVProgressHUD.dismiss()
+//                completionHandler(true, nil)
+//            } else {
+//                print("Error \(response.result.error!))")
+//                completionHandler(false, response.result.error)
+//            }
         }
     }
     
-    func fetchMenuForRestaurant(id: Int) {
-        let menuURL = "\(menuAPI)\(restaurants)\(id)\(menu)"
+    func fetchMenuForRestaurant(completionHandler: @escaping (Result<[MenuItem]>) -> Void, id: Int) {
+        
+        
+        completionHandler(Result.loading)
+        
+        let menuURL = "\(apiStrings.menuAPI)\(apiStrings.restaurants)\(id)\(apiStrings.menu)"
         print(menuURL)
-        //fetch and parse data from api
         checkIfInternetIsAvalible(type: "menu")
-        print(menuURL)
         Alamofire.request(menuURL, method: .get).validate().responseJSON { response in
-            if response.result.isSuccess {
-                print("Fetched menu for restaurant with id: \(id)")
-                let menuData : JSON = JSON(response.result.value!)
-                JSONParsing.parseMenu(json: menuData, restaurantID: id)
-                SVProgressHUD.dismiss()
-            } else {
-                print("Error \(String(describing: response.result.error))")
+            
+            switch response.result {
+            case .success(let value):
+                let menuData : JSON = JSON(value)
+                let data = JSONParsing.parseMenu(json: menuData, restaurantID: id)
+                completionHandler(Result.success(data))
+                return
+            case .failure(let error):
+                completionHandler(Result.failure(error))
             }
+            
         }
     }
     
     func fetchOrderStatus(orderID: Int)  {
-        let orderURL = "\(menuAPI)\(orders)\(orderID)"
+        let orderURL = "\(apiStrings.menuAPI)\(apiStrings.orders)\(orderID)"
         checkIfInternetIsAvalible(type: "order Status")
         Alamofire.request(orderURL, method: .get).validate().responseJSON { response in
             if response.result.isSuccess {
@@ -74,7 +104,7 @@ class DataTransfer {
     }
     
     func postOrder(order: Order) {
-        let orderURL = "\(menuAPI)\(orders)"
+        let orderURL = "\(apiStrings.menuAPI)\(apiStrings.orders)"
         
         print(order)
         

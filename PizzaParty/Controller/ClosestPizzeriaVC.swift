@@ -24,12 +24,11 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     
     var restaurantList = [Restaurant]()
     
+    
     @IBOutlet weak var restaurantTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataStartTableView(notification:)), name: .doneParsingRestaurants, object: nil)
         
         //Allow Device to track location
         self.locationManager.requestWhenInUseAuthorization()
@@ -42,16 +41,38 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        datafetcher.fetchRestaurantData()
+        datafetcher.fetchRestaurantData(completionHandler: { result in
+            
+            switch result {
+            case .success(let value):
+                debugPrint("hmm")
+                print(value)
+                self.restaurantList = value
+                // Ta bort loading
+                DispatchQueue.main.async {
+                    self.reloadDataStartTableView()
+                }
+                SVProgressHUD.dismiss()
+            case .loading:
+                debugPrint("loading")
+                // Visa loading
+            case .failure(let error):
+                // Visa error
+                debugPrint(error.localizedDescription)
+            }
+            
+        })
         
     }
     
-    @objc func reloadDataStartTableView(notification: NSNotification) {
-        print(ListOfRestaurants.listOfRestaurants[0].name)
-        
-        
+    func sortOnDistance(list: [Restaurant]) -> [Restaurant] {
+        let sortedList = list.sorted(by: {$0.distanceFromDevice < $1.distanceFromDevice})
+        return sortedList
+    }
+    
+     func reloadDataStartTableView() {
         //sort list on distance
-        restaurantList = ListOfRestaurants.listOfRestaurants.sorted(by: {$0.distanceFromDevice < $1.distanceFromDevice})
+        restaurantList = sortOnDistance(list: restaurantList)
         
         restaurantTableView.reloadData()
         SVProgressHUD.dismiss()
@@ -75,9 +96,9 @@ extension ClosestPizzeriaVC: PizzeriaCellDelegate {
         MenuList.sidesList.removeAll()
         
         // fetch clicked cells menu
-        datafetcher.fetchMenuForRestaurant(id: id)
+//        datafetcher.fetchMenuForRestaurant(id: id)
         // listen for parsing to be done
-        NotificationCenter.default.addObserver(self, selector: #selector(goToMenu(notification:)), name: .doneParsingMenu, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(goToMenu(notification:)), name: .doneParsingMenu, object: nil)
         
         // present menu in table view
     }
@@ -87,15 +108,13 @@ extension ClosestPizzeriaVC: PizzeriaCellDelegate {
         performSegue(withIdentifier: "goToMenu", sender: self)
         SVProgressHUD.dismiss()
     }
-    
-    
 }
 
 //Tableviewdelegate extension
 extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("List Count:  \(ListOfRestaurants.listOfRestaurants.count)")
-        return ListOfRestaurants.listOfRestaurants.count
+        return restaurantList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +122,7 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
         let restaurant = restaurantList[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PizzeriaCell") as? PizzeriaCell else {
-            return UITableViewCell()
+            fatalError()
         }
         cell.setPizzeriaInfo(restaurant: restaurant, deviceLocation: ClosestPizzeriaVC.deviceLocation)
         cell.delegate = self
@@ -113,7 +132,7 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension Notification.Name {
-    static let doneParsingRestaurants = Notification.Name("doneParsingRestaurants")
-    static let doneParsingMenu = Notification.Name("doneParsingMenu")
-}
+//extension Notification.Name {
+////    static let doneParsingRestaurants = Notification.Name("doneParsingRestaurants")
+//    static let doneParsingMenu = Notification.Name("doneParsingMenu")
+//}

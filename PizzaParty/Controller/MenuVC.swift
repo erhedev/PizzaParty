@@ -10,15 +10,41 @@ import UIKit
 
 class MenuVC: UIViewController {
     
+    var closest = ClosestPizzeriaVC()
+    
+    var dataFetcher = DataTransfer()
+    
     var restaurantID : Int!
+    
+    var menuList = [MenuItem]()
     
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        restaurantID = MenuList.pizzaList[0].fromPizzeria
-        restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
+//        restaurantID = MenuList.pizzaList[0].fromPizzeria
+//        restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
+        
+        // fixa idt till rätt restaurang
+        restaurantID = closest.restaurantList[0].id
+        
+        dataFetcher.fetchMenuForRestaurant(completionHandler: { result in
+            switch result {
+            case .success(let value):
+                debugPrint("success fetching menu")
+                print(value)
+                self.menuList = value
+                // load tableview
+                // dismiss spinner
+            case .loading:
+                debugPrint("Loading Menu")
+                // Visa Spinner
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
+        }, id: restaurantID)
+        
     }
         
 }

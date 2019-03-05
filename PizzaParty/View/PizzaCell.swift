@@ -24,12 +24,16 @@ class PizzaCell: UITableViewCell {
     var pizza: MenuItem!
     var pizzaID: Int!
     var delegate: PizzaCellDelegate?
+    var toppings : String?
     
     func setPizzaInfo(menuItem: MenuItem) {
         pizza = menuItem
+        
+        toppings = menuItem.topping!.joined(separator: ", ")
+       
         nameLabel.text = pizza.name
         priceLabel.text = "\(pizza.price!) kr"
-        toppingLabel.text = String(pizza.topping.description)
+        toppingLabel.text = toppings
         pizzaID = menuItem.id
     }
    
