@@ -85,7 +85,6 @@
                                             <outlet property="pizzeriaAdressLabel" destination="oqZ-Tu-pNb" id="SxL-uc-VbA"/>
                                             <outlet property="pizzeriaDistanceLabel" destination="9HH-ih-J2a" id="Zsi-7j-6Hn"/>
                                             <outlet property="pizzeriaNameLabel" destination="cLo-be-dzW" id="OSN-eY-ADf"/>
-                                            <segue destination="Grk-Zo-vSu" kind="show" identifier="goToMenu" id="0uE-vD-cGR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,7 +117,7 @@
         <!--MenuVC-->
         <scene sceneID="0wR-F7-hj6">
             <objects>
-                <viewController id="Grk-Zo-vSu" customClass="MenuVC" customModule="PizzaParty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Grk-Zo-vSu" customClass="MenuVC" customModule="PizzaParty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fHX-iG-pDD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -505,7 +504,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="33C-ow-LIM"/>
-        <segue reference="31O-UA-tgK"/>
+        <segue reference="OTi-2r-qRs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,23 +24,28 @@ class PizzaCell: UITableViewCell {
     var pizza: MenuItem!
     var pizzaID: Int!
     var delegate: PizzaCellDelegate?
-    var toppings : String?
     
     func setPizzaInfo(menuItem: MenuItem) {
         pizza = menuItem
         
-        toppings = menuItem.topping!.joined(separator: ", ")
-       
+        var toppingsStr : String
+        
+        if pizza.topping != nil {
+            toppingsStr = pizza.topping!.joined(separator: ", ")
+        } else {
+            toppingsStr = ""
+        }
+        
         nameLabel.text = pizza.name
         priceLabel.text = "\(pizza.price!) kr"
-        toppingLabel.text = toppings
+        toppingLabel.text = toppingsStr
         pizzaID = menuItem.id
     }
    
     @IBAction func orderButton(_ sender: Any) {
         
         let order = OrderedItem(menuItem: self.pizza, quantity: 1)
-        let menuItem = MenuItem(id: self.pizza.id, category: self.pizza.category, name: self.pizza.name, price: self.pizza.price, topping: self.pizza.topping, rank: self.pizza.rank, fromPizzeria: self.pizza.fromPizzeria)
+        let menuItem = MenuItem(id: self.pizza.id, category: self.pizza.category, name: self.pizza.name, price: self.pizza.price, topping: self.pizza.topping!, rank: self.pizza.rank, fromPizzeria: self.pizza.fromPizzeria)
         MenuList.itemsToOrder.append(order)
         MenuList.menuItemsToOrder.append(menuItem)
         print(MenuList.itemsToOrder.count)

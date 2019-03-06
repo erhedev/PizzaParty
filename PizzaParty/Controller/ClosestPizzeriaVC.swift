@@ -23,13 +23,14 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
     var datafetcher = DataTransfer()
     
     var restaurantList = [Restaurant]()
+  
+    var restaurantListSortedOnDistance = [Restaurant]()
     
     
     @IBOutlet weak var restaurantTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Allow Device to track location
         self.locationManager.requestWhenInUseAuthorization()
         
@@ -63,16 +64,20 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
             
         })
         
+        
     }
     
     func sortOnDistance(list: [Restaurant]) -> [Restaurant] {
-        let sortedList = list.sorted(by: {$0.distanceFromDevice < $1.distanceFromDevice})
+        let sortedList = list.sorted(by: {$0.distanceFromDevice > $1.distanceFromDevice})
         return sortedList
     }
     
      func reloadDataStartTableView() {
         //sort list on distance
-        restaurantList = sortOnDistance(list: restaurantList)
+        restaurantListSortedOnDistance = sortOnDistance(list: restaurantList)
+        
+        print(restaurantListSortedOnDistance[0].name)
+        print(restaurantList[0].name)
         
         restaurantTableView.reloadData()
         SVProgressHUD.dismiss()
@@ -92,21 +97,22 @@ class ClosestPizzeriaVC: UIViewController, CLLocationManagerDelegate {
 extension ClosestPizzeriaVC: PizzeriaCellDelegate {
     func didTapSeeMenu(id: Int) {
         print("tapped \(id)")
-        MenuList.pizzaList.removeAll()
-        MenuList.sidesList.removeAll()
         
-        // fetch clicked cells menu
-//        datafetcher.fetchMenuForRestaurant(id: id)
-        // listen for parsing to be done
-//        NotificationCenter.default.addObserver(self, selector: #selector(goToMenu(notification:)), name: .doneParsingMenu, object: nil)
+        let name = restaurantList[id-1].getName()
         
-        // present menu in table view
+        debugPrint("Name\(name)")
+        
+        MenuVC.restaurantID = id
+        MenuVC.name = name
+        
+        goToMenu()
     }
     
-    @objc func goToMenu(notification: NSNotification) {
-        print(MenuList.pizzaList[0].name)
-        performSegue(withIdentifier: "goToMenu", sender: self)
-        SVProgressHUD.dismiss()
+    
+func goToMenu() {
+    let menuVC = storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+    present(menuVC, animated: true, completion: nil)
+    
     }
 }
 
@@ -132,7 +138,5 @@ extension ClosestPizzeriaVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-//extension Notification.Name {
-////    static let doneParsingRestaurants = Notification.Name("doneParsingRestaurants")
-//    static let doneParsingMenu = Notification.Name("doneParsingMenu")
-//}
+
+

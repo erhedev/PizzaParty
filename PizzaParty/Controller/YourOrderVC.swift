@@ -14,6 +14,7 @@ class YourOrderVC: UIViewController {
     var restaurantID : Int!
     var dataHandler = DataTransfer()
     static var orderID : Int!
+    var orderStatus : OrderStatus!
     var placeOrderButtonIsHidden : Bool?
     
     
@@ -25,9 +26,27 @@ class YourOrderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(prepareForOrderStatus(notification:)), name: .doneParsingOrderStatus, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ShowButtonsForCheckOrder(notification:)), name: .orderPosted, object: nil)
+        dataHandler.fetchOrderStatus(completionHandler: { result in
+            switch result {
+            case .success(let value):
+                debugPrint("success fetching status")
+                debugPrint(value)
+                self.orderStatus = value
+            case .loading:
+                debugPrint("Loading")
+                //show spinner
+                SVProgressHUD.show(withStatus: "Loading Menu")
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+                SVProgressHUD.showError(withStatus: "No menu To Show")
+            }
+        }, orderID: YourOrderVC.orderID)
+        
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(prepareForOrderStatus(notification:)), name: .doneParsingOrderStatus, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(ShowButtonsForCheckOrder(notification:)), name: .orderPosted, object: nil)
         
         if placeOrderButtonIsHidden == true {
             hideAndDisableButton(button: placeOrderButton)
@@ -35,11 +54,10 @@ class YourOrderVC: UIViewController {
         
         hideAndDisableButton(button: checkOrderButton)
         
-        restaurantID = MenuList.pizzaList[0].fromPizzeria
+        restaurantID = MenuVC.restaurantID
         
-        restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
-        
-        // Do any additional setup after loading the view.
+        restaurantNameLabel.text = MenuVC.name
+
     }
     
     func hideAndDisableButton(button: UIButton) {
@@ -74,15 +92,6 @@ class YourOrderVC: UIViewController {
     @IBAction func placeOrderPressed(_ sender: Any) {
         placeOrder()
     }
- 
-//    @IBAction func cheCKOrderStatusPressed(_ sender: Any) {
-//        
-//    }
-//   
-//    @IBAction func backButtonPressed(_ sender: Any) {
-//        
-//    }
-    
 }
 
 extension YourOrderVC: UITableViewDelegate, UITableViewDataSource {
@@ -109,9 +118,9 @@ extension YourOrderVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-    
-extension Notification.Name {
-    static let orderPosted = Notification.Name("orderPosted")
-    static let doneParsingOrderStatus = Notification.Name("doneParsingOrderStatus")
-}
+//
+//extension Notification.Name {
+//    static let orderPosted = Notification.Name("orderPosted")
+//    static let doneParsingOrderStatus = Notification.Name("doneParsingOrderStatus")
+//}
 

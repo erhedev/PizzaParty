@@ -27,23 +27,11 @@ class JSONParsing {
             
             restaurants.append(restaurant)
             
-//            ListOfRestaurants.listOfRestaurants.append(restaurant)
-//
-//            print(ListOfRestaurants.listOfRestaurants.count)
-//            print("Restaurant added")
-            
         }
-        
-       
-        //ParsingDone let notificaton center know
-//        NotificationCenter.default.post(name: .doneParsingRestaurants, object: nil)
-        
-        
-        //all menuItems now in array
-        // reload menu tableview
         return restaurants
 
     }
+    
     
     static func parseMenu(json: JSON, restaurantID: Int) -> [MenuItem] {
         //TODO: Change to menu values
@@ -72,23 +60,17 @@ class JSONParsing {
                 let menuItem = MenuItem(id: id, category: category, name: name, price: price, fromPizzeria: restaurantID)
                 menuItems.append(menuItem)
             }
-            
-            print(MenuList.pizzaList.count + MenuList.sidesList.count)
-            print("MenuItem added")
-            
+ 
         }
         
         return menuItems
         
-        //ParsingDone let notificaton center know
-//        NotificationCenter.default.post(name: .doneParsingMenu, object: nil)
-        
-        //all menuItems now in array
-        // reload menu tableview
-        
     }
     
-    static func parseOrderStatus(json: JSON) {
+    static func parseOrderStatus(json: JSON) -> OrderStatus {
+        
+        var order : OrderStatus!
+        
         for result in json.arrayValue {
             let orderID = result["orderId"].intValue
             let totalPrice = result["totalPrice"].intValue
@@ -103,15 +85,10 @@ class JSONParsing {
                 cartObj.append(item.stringValue)
             }
             
-            let order = OrderStatus(orderID: orderID, totalPrice: totalPrice, orderedAt: orderedAt, estDel: estimatedDelivery, status: status, cart: cartObj)
+            order = OrderStatus(orderID: orderID, totalPrice: totalPrice, orderedAt: orderedAt, estDel: estimatedDelivery, status: status, cart: cartObj)
             
-            MenuList.orderStatuses.removeAll()
-            MenuList.orderStatuses.append(order)
         }
-       
-        //Parsing Done let notificaton center know
-        NotificationCenter.default.post(name: .doneParsingOrderStatus, object: nil)
-        
+        return order
     }
     
     

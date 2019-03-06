@@ -50,16 +50,6 @@ class DataTransfer {
                 completionHandler(Result.failure(error))
             }
             
-//            if response.result.isSuccess {
-//                print("fetched all restaurants")
-//                let restaurantData : JSON = JSON(response.result.value!)
-//                JSONParsing.parseRestaurant(json: restaurantData)
-//                SVProgressHUD.dismiss()
-//                completionHandler(true, nil)
-//            } else {
-//                print("Error \(response.result.error!))")
-//                completionHandler(false, response.result.error)
-//            }
         }
     }
     
@@ -86,20 +76,24 @@ class DataTransfer {
         }
     }
     
-    func fetchOrderStatus(orderID: Int)  {
+    
+    func fetchOrderStatus(completionHandler: @escaping (Result<OrderStatus>) -> Void, orderID: Int)  {
+        
+        completionHandler(Result.loading)
+        
         let orderURL = "\(apiStrings.menuAPI)\(apiStrings.orders)\(orderID)"
         checkIfInternetIsAvalible(type: "order Status")
         Alamofire.request(orderURL, method: .get).validate().responseJSON { response in
-            if response.result.isSuccess {
-                print("Fetched Order Status for order: \(orderID)")
-                SVProgressHUD.dismiss()
-                let orderStatusData : JSON = JSON(response.result.value!)
-                JSONParsing.parseOrderStatus(json: orderStatusData)
-            } else {
-                print("Error \(String(describing: response.result.error))")
+            switch response.result {
+            case .success(let value):
+                let orderData : JSON = JSON(value)
+                let data = JSONParsing.parseOrderStatus(json: orderData)
+                completionHandler(Result.success(data))
+                return
+            case .failure(let error):
+                completionHandler(Result.failure(error))
             }
         }
-        
         
     }
     
@@ -134,7 +128,6 @@ class DataTransfer {
                         let status = try JSONDecoder().decode(OrderStatusResponse.self, from: jsonData)
                         print(status.orderId)
                         StatusVC.orderId = status.orderId
-//                        StatusVC.orderStatus = OrderStatus(orderID: status.orderId, totalPrice: status.totalPrice, orderedAt: status.orderedAt, estDel: status.esitmatedDelivery, status: status.status)
                         let orderStatus = OrderStatus(orderID: status.orderId, totalPrice: status.totalPrice, orderedAt: status.orderedAt, estDel: status.esitmatedDelivery, status: status.status)
                         MenuList.orderStatuses.append(orderStatus)
                         print(MenuList.orderStatuses[0].status)
@@ -147,7 +140,7 @@ class DataTransfer {
             SVProgressHUD.dismiss()
             }.resume()
         
-        NotificationCenter.default.post(name: .orderPosted, object: nil)
+//        NotificationCenter.default.post(name: .orderPosted, object: nil)
     }
     
     func checkIfInternetIsAvalible(type: String) {
@@ -160,7 +153,6 @@ class DataTransfer {
             }
             
         } else {
-            print("Pity the fool!")
             SVProgressHUD.dismiss()
             SVProgressHUD.setMaximumDismissTimeInterval(7)
             SVProgressHUD.showError(withStatus: "You don't have Internet Connection")

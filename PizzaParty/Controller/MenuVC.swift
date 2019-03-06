@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class MenuVC: UIViewController {
-    
-    var closest = ClosestPizzeriaVC()
-    
+        
     var dataFetcher = DataTransfer()
     
-    var restaurantID : Int!
+    static var  restaurantID : Int?
+    
+    static var name : String?
     
     var menuList = [MenuItem]()
     
@@ -23,51 +24,51 @@ class MenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        restaurantID = MenuList.pizzaList[0].fromPizzeria
-//        restaurantNameLabel.text = ListOfRestaurants.listOfRestaurants[restaurantID-1].name
-        
+
         // fixa idt till rätt restaurang
-        restaurantID = closest.restaurantList[0].id
-        
-        dataFetcher.fetchMenuForRestaurant(completionHandler: { result in
-            switch result {
-            case .success(let value):
-                debugPrint("success fetching menu")
-                print(value)
-                self.menuList = value
-                // load tableview
+
+            dataFetcher.fetchMenuForRestaurant(completionHandler: { result in
+                switch result {
+                case .success(let value):
+                    debugPrint("success fetching menu")
+                    print(value)
+                    self.menuList = value
+                    self.reloadDataStartTableView()
+                    // load tableview
                 // dismiss spinner
-            case .loading:
-                debugPrint("Loading Menu")
-                // Visa Spinner
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-            }
-        }, id: restaurantID)
+                case .loading:
+                    debugPrint("Loading Menu")
+                    // Visa Spinner
+                    SVProgressHUD.show(withStatus: "Loading Menu")
+                case .failure(let error):
+                    debugPrint(error.localizedDescription)
+                    SVProgressHUD.showError(withStatus: "No menu To Show")
+                }
+            }, id: MenuVC.restaurantID!)
+        
+        restaurantNameLabel.text = MenuVC.name!
         
     }
-        
+    
+    
+    func reloadDataStartTableView() {
+        menuTableView.reloadData()
+        SVProgressHUD.dismiss()
+    }
+    
 }
 extension MenuVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuList.pizzaList.count + MenuList.sidesList.count
-        //        return MenuList.pizzaList.count
+        return menuList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row < MenuList.pizzaList.count {
-            guard let pizzaCell = Bundle.main.loadNibNamed("PizzaCell", owner: self, options: nil)?.first as? PizzaCell else {
-                return UITableViewCell()
-            }
-            pizzaCell.setPizzaInfo(menuItem: MenuList.pizzaList[indexPath.row])
-            return pizzaCell
-        } else {
-            guard let menuItemCell = Bundle.main.loadNibNamed("MenuItemCell", owner: self, options: nil)?.first as? MenuItemCell else {
-                return UITableViewCell()
-            }
-            menuItemCell.setMenuItemInfo(menuItem: MenuList.sidesList[indexPath.row-MenuList.pizzaList.count])
-            return menuItemCell
+        guard let itemCell = Bundle.main.loadNibNamed("PizzaCell", owner: self, options: nil)?.first as? PizzaCell else {
+            return UITableViewCell()
         }
+        itemCell.setPizzaInfo(menuItem: menuList[indexPath.row])
+        return itemCell
+        
     }
 }
